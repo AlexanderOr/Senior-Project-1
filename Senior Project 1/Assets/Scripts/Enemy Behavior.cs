@@ -1,19 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
 public class EnemyBehavior : MonoBehaviour
 {
+    public int EnemyHP = 50;
     private float MoveSpeed = 3f;
     private float LookSpeed = 10f;
     public GameObject Player;
+    public HitBox HitBox;
+    public bool HasTarget;
+    public Animator Animator;
+
     private Rigidbody2D RB;
 
     private Vector2 DirectionOfPlayer;
     private Vector2 EnemyToPlayer;
     private float EnemyDistance;
-    public float EnemyAttackDistance = 2;
+    public float EnemyAttackDistance = 1;
 
 
 
@@ -21,13 +27,20 @@ public class EnemyBehavior : MonoBehaviour
     void Start()
     {
         RB = GetComponent<Rigidbody2D>();
+        Animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         EnemyDistance = Vector2.Distance(Player.transform.position, transform.position);
-        Debug.Log(EnemyDistance);
+        HasTarget = HitBox.Colliders.Count > 0;
+
+        if (EnemyHP == 0)
+        {
+            Animator.SetBool("HasHP", false);
+        }
+        
         UpdateDirection();
         RotateToPlayer();
         Move();
@@ -50,14 +63,17 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Move()
     {
-        if(EnemyDistance <= EnemyAttackDistance)
+        if(HasTarget == true)
         {
             //attack anim and stuff
+            Animator.SetBool("InRange", true);
             RB.velocity = transform.up * 0;
+            //do damage to player
             return;
         }
-        else
+        else if (HasTarget == false)
         {
+            Animator.SetBool("InRange", false);
             RB.velocity = transform.up * MoveSpeed;
         }
         
