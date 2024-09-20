@@ -16,15 +16,20 @@ public class PlayerController : MonoBehaviour
 
     public EnemyBehavior EnemyBehavior;
 
+    private const string Horizontal = "Horizontal";
+    private const string Vertical = "Vertical";
+
 
     [SerializeField] private float MoveSpeed = 5f;
 
     private Vector2 Movement;
     private Rigidbody2D RB;
+    private Animator animator;
 
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -32,6 +37,9 @@ public class PlayerController : MonoBehaviour
         Movement.Set(InputManager.Movement.x, InputManager.Movement.y);
 
         RB.velocity = Movement * MoveSpeed;
+
+        animator.SetFloat(Horizontal, Movement.x);
+        animator.SetFloat(Vertical, Movement.y);
 
         if (Input.GetKeyDown(KeyCode.Space) && Movement.x != 0 && DodgeCDTimer == 0)
         {
