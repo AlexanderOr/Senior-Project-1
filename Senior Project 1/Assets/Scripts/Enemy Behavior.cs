@@ -21,7 +21,7 @@ public class EnemyBehavior : MonoBehaviour
     private float EnemyDistance;
     public float EnemyAttackDistance = 1;
 
-
+    public PlayerController PlayerController;
 
     // Start is called before the first frame update
     void Start()
@@ -35,11 +35,6 @@ public class EnemyBehavior : MonoBehaviour
     {
         EnemyDistance = Vector2.Distance(Player.transform.position, transform.position);
         HasTarget = HitBox.Colliders.Count > 0;
-
-        if (EnemyHP == 0)
-        {
-            Animator.SetBool("HasHP", false);
-        }
         
         UpdateDirection();
         RotateToPlayer();
@@ -63,19 +58,30 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Move()
     {
-        if(HasTarget == true)
+        if(EnemyHP != 0)
         {
-            //attack anim and stuff
-            Animator.SetBool("InRange", true);
-            RB.velocity = transform.up * 0;
-            //do damage to player
-            return;
+            if (HasTarget == true)
+            {
+                //attack anim and stuff
+                Animator.SetBool("InRange", true);
+                RB.velocity = transform.up * 0;
+                //do damage to player
+                PlayerController.playerHit();
+                return;
+            }
+            else if (HasTarget == false)
+            {
+                Animator.SetBool("InRange", false);
+                RB.velocity = transform.up * MoveSpeed;
+            }
         }
-        else if (HasTarget == false)
+        else if (EnemyHP == 0)
         {
-            Animator.SetBool("InRange", false);
-            RB.velocity = transform.up * MoveSpeed;
+            Animator.SetBool("HasHP", false);
+            
+            Destroy(gameObject);
         }
+        
         
     }
 

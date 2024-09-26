@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
     int Player_MaxHP = 100;
-    int Player_HP = 100;
+    public int Player_HP = 100;
     int Player_MaxEXP = 100;
-    int Player_EXP = 0;
+    public int Player_EXP = 0;
     int Player_Level = 1;
     bool Invincible = false;
-    float Player_DodgeCD = 5;
-    float DodgeCDTimer;
+    public float Player_DodgeCD = 5;
+    public float DodgeCDTimer;
     float RollDist = 7;
 
     public EnemyBehavior EnemyBehavior;
+    public DodgeCoolDown dodgeCoolDown;
 
     private const string Horizontal = "Horizontal";
     private const string Vertical = "Vertical";
@@ -45,11 +48,13 @@ public class PlayerController : MonoBehaviour
         {
             RB.velocity = new Vector2((Movement.x * MoveSpeed) * RollDist,RB.velocity.y);
             DodgeCDTimer = Player_DodgeCD;
+            dodgeCoolDown.UseDodge();
         }
         else if (Input.GetKeyDown(KeyCode.Space) && Movement.y != 0 && DodgeCDTimer == 0)
         {
             RB.velocity = new Vector2(RB.velocity.x, (Movement.y * MoveSpeed) * RollDist);
             DodgeCDTimer = Player_DodgeCD;
+            dodgeCoolDown.UseDodge();
         }
 
         if (DodgeCDTimer > 0)
@@ -62,14 +67,25 @@ public class PlayerController : MonoBehaviour
             DodgeCDTimer = 0;
         }
 
-        Debug.Log(DodgeCDTimer);
+        
 
+        if (Player_HP <= 0)
+        {
+            SceneManager.LoadScene("Game Over");
+        }
+
+        //kill Enemy
         if (Input.GetKeyDown(KeyCode.E))
         {
             EnemyBehavior.EnemyHP = 0;
         }
     }
 
-
+    public void playerHit()
+    {
+        Debug.Log("hit");
+        Player_HP = Player_HP - 5;
+        Debug.Log(Player_HP);
+    }
 
 }
