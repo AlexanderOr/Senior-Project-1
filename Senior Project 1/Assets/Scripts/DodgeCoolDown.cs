@@ -26,14 +26,18 @@ public class DodgeCoolDown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(playerController.isPaused == false)
         {
-            UseDodge();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                UseDodge();
+            }
+            if (Cooldown)
+            {
+                ApplyCD();
+            }
         }
-        if(Cooldown)
-        {
-            ApplyCD();
-        }
+        
     }
 
     void ApplyCD()

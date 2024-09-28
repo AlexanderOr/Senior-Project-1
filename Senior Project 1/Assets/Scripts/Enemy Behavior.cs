@@ -21,7 +21,7 @@ public class EnemyBehavior : MonoBehaviour
     private float EnemyDistance;
     public float EnemyAttackDistance = 1;
 
-    public PlayerController PlayerController;
+    public PlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
@@ -33,12 +33,19 @@ public class EnemyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        EnemyDistance = Vector2.Distance(Player.transform.position, transform.position);
-        HasTarget = HitBox.Colliders.Count > 0;
-        
-        UpdateDirection();
-        RotateToPlayer();
-        Move();
+        if (playerController.isPaused == true)
+        {
+            RB.velocity = transform.up * 0;
+        }
+        else
+        {
+            EnemyDistance = Vector2.Distance(Player.transform.position, transform.position);
+            HasTarget = HitBox.Colliders.Count > 0;
+
+            UpdateDirection();
+            RotateToPlayer();
+            Move();
+        }
     }
 
     private void UpdateDirection()
@@ -66,7 +73,7 @@ public class EnemyBehavior : MonoBehaviour
                 Animator.SetBool("InRange", true);
                 RB.velocity = transform.up * 0;
                 //do damage to player
-                PlayerController.playerHit();
+                playerController.playerHit();
                 return;
             }
             else if (HasTarget == false)

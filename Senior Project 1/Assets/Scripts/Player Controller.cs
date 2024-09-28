@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public float DodgeCDTimer;
     float RollDist = 7;
 
+    public bool isPaused;
+
     public EnemyBehavior EnemyBehavior;
     public DodgeCoolDown dodgeCoolDown;
 
@@ -37,42 +39,50 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Movement.Set(InputManager.Movement.x, InputManager.Movement.y);
-
-        RB.velocity = Movement * MoveSpeed;
-
-        animator.SetFloat(Horizontal, Movement.x);
-        animator.SetFloat(Vertical, Movement.y);
-
-        if (Input.GetKeyDown(KeyCode.Space) && Movement.x != 0 && DodgeCDTimer == 0)
+        if(isPaused == false)
         {
-            RB.velocity = new Vector2((Movement.x * MoveSpeed) * RollDist,RB.velocity.y);
-            DodgeCDTimer = Player_DodgeCD;
-            dodgeCoolDown.UseDodge();
-        }
-        else if (Input.GetKeyDown(KeyCode.Space) && Movement.y != 0 && DodgeCDTimer == 0)
-        {
-            RB.velocity = new Vector2(RB.velocity.x, (Movement.y * MoveSpeed) * RollDist);
-            DodgeCDTimer = Player_DodgeCD;
-            dodgeCoolDown.UseDodge();
-        }
+            Movement.Set(InputManager.Movement.x, InputManager.Movement.y);
 
-        if (DodgeCDTimer > 0)
-        {
-            DodgeCDTimer -= Time.deltaTime;
-        }
+            RB.velocity = Movement * MoveSpeed;
 
-        if (DodgeCDTimer < 0)
-        {
-            DodgeCDTimer = 0;
-        }
+            animator.SetFloat(Horizontal, Movement.x);
+            animator.SetFloat(Vertical, Movement.y);
 
+            if (Input.GetKeyDown(KeyCode.Space) && Movement.x != 0 && DodgeCDTimer == 0)
+            {
+                RB.velocity = new Vector2((Movement.x * MoveSpeed) * RollDist, RB.velocity.y);
+                DodgeCDTimer = Player_DodgeCD;
+                dodgeCoolDown.UseDodge();
+            }
+            else if (Input.GetKeyDown(KeyCode.Space) && Movement.y != 0 && DodgeCDTimer == 0)
+            {
+                RB.velocity = new Vector2(RB.velocity.x, (Movement.y * MoveSpeed) * RollDist);
+                DodgeCDTimer = Player_DodgeCD;
+                dodgeCoolDown.UseDodge();
+            }
+
+            if (DodgeCDTimer > 0)
+            {
+                DodgeCDTimer -= Time.deltaTime;
+            }
+
+            if (DodgeCDTimer < 0)
+            {
+                DodgeCDTimer = 0;
+            }
+
+
+
+            if (Player_HP <= 0)
+            {
+                SceneManager.LoadScene("Game Over");
+            }
+        }
+        else if(isPaused == true)
+        {
+            RB.velocity = Vector2.zero;
+        }
         
-
-        if (Player_HP <= 0)
-        {
-            SceneManager.LoadScene("Game Over");
-        }
 
         //kill Enemy
         if (Input.GetKeyDown(KeyCode.E))
@@ -83,9 +93,13 @@ public class PlayerController : MonoBehaviour
 
     public void playerHit()
     {
-        Debug.Log("hit");
-        Player_HP = Player_HP - 5;
-        Debug.Log(Player_HP);
+        if (isPaused == false)
+        {
+            Debug.Log("hit");
+            Player_HP = Player_HP - 5;
+            Debug.Log(Player_HP);
+        }
+        
     }
 
 }
