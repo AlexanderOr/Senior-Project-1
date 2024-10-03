@@ -10,8 +10,10 @@ public class PlayerController : MonoBehaviour
     public int Player_HP = 100;
     int Player_MaxEXP = 100;
     public int Player_EXP = 0;
-    int Player_Level = 1;
+    public int Player_Level = 1;
     bool Invincible = false;
+    float Iframes = 1;
+    float IframeTimer;
     public float Player_DodgeCD = 5;
     public float DodgeCDTimer;
     float RollDist = 7;
@@ -30,6 +32,11 @@ public class PlayerController : MonoBehaviour
     private Vector2 Movement;
     private Rigidbody2D RB;
     private Animator animator;
+
+
+    //Spell System
+    public BasicSpells[] AllSpells;
+    public BasicSpells[] PlayerSpells;
 
     private void Awake()
     {
@@ -75,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
             if (Player_HP <= 0)
             {
-                SceneManager.LoadScene("Game Over");
+                SceneManager.LoadScene("GameOver");
             }
         }
         else if(isPaused == true)
@@ -89,17 +96,47 @@ public class PlayerController : MonoBehaviour
         {
             EnemyBehavior.EnemyHP = 0;
         }
+
+        if(Invincible)
+        {
+            ApplyIframeCD();
+        }
     }
 
     public void playerHit()
     {
-        if (isPaused == false)
+        if (Invincible == false && isPaused == false)
         {
             Debug.Log("hit");
             Player_HP = Player_HP - 5;
-            Debug.Log(Player_HP);
-        }
-        
+            IframeCD();
+            Debug.Log(Player_HP);            
+        }        
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "EXP")
+        {
+            Destroy(collision.gameObject);
+            Player_EXP += 5;
+        }
+    }
+
+    public void IframeCD()
+    {
+        IframeTimer = Iframes;
+        Invincible = true;
+    }
+
+    public void ApplyIframeCD()
+    {
+        IframeTimer -= Time.deltaTime;
+
+        if( IframeTimer < 0 )
+        {
+            Invincible = false;
+        }
+    }
 }

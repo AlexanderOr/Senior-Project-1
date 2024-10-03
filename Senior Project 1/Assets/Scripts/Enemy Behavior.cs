@@ -37,6 +37,10 @@ public class EnemyBehavior : MonoBehaviour
         {
             RB.velocity = transform.up * 0;
         }
+        else if (gameObject.tag == "Frozen")
+        {
+            RB.velocity = transform.up * 0;
+        }
         else
         {
             EnemyDistance = Vector2.Distance(Player.transform.position, transform.position);

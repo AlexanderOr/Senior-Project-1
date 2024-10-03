@@ -10,6 +10,7 @@ public class HPManager : MonoBehaviour
     public TMP_Text healthText;
     public PlayerController playerController;
     public Image XP;
+    public TMP_Text XPText;
 
 
 
@@ -22,7 +23,8 @@ public class HPManager : MonoBehaviour
     {
         health.fillAmount = playerController.Player_HP / 100f;
         XP.fillAmount = playerController.Player_EXP / 100f;
-        healthText.text = playerController.Player_HP.ToString();
+        healthText.text = playerController.Player_HP.ToString() + " / 100";
+        XPText.text = playerController.Player_EXP.ToString() + " / 100";
     }
 
 }
