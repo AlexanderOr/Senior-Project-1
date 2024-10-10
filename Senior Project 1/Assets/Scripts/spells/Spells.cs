@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum SpellType { Fire, Ice, Earth, Nature, Arcane}
+
 public abstract class Spells : ScriptableObject
 {
     public string SpellName;
@@ -12,7 +13,7 @@ public abstract class Spells : ScriptableObject
     public int CoolDown;
     public Sprite Icon;
 
-    public abstract void CastSpell(Vector2 targetPosition);
+    public abstract void CastSpell(Vector2 targetPosition, Vector2 playerPosition);
 
 }
 

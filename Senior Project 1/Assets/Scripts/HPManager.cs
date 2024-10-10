@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class HPManager : MonoBehaviour
 {
@@ -12,11 +13,21 @@ public class HPManager : MonoBehaviour
     public Image XP;
     public TMP_Text XPText;
 
+    //spells
+    public Image spellIcon1;
+    public Image spellIcon2;
+    public Image spellIcon3;
+    public Image spellIcon4;
+    public Image spellIcon5;
 
 
-    void Start()
+   public void SetSpell(Spells spells)
     {
-
+        if (spells != null)
+        {
+            spellIcon1.sprite = spells.Icon;
+            spellIcon2.sprite = spells.Icon;
+        }
     }
 
     void Update()

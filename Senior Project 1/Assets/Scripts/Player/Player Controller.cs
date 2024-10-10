@@ -34,9 +34,9 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
 
 
-    //Spell System
-    public BasicSpells[] AllSpells;
-    public BasicSpells[] PlayerSpells;
+    //spells
+    public SpellHolder SpellHolder;
+    private int currentSpellIndex = 0;
 
     private void Awake()
     {
@@ -46,6 +46,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        //spells
+        HandleSpellSelection();
+        HandleSpellCasting();
+
+
+        //movement
         if(isPaused == false)
         {
             Movement.Set(InputManager.Movement.x, InputManager.Movement.y);
@@ -97,7 +103,7 @@ public class PlayerController : MonoBehaviour
             EnemyBehavior.EnemyHP = 0;
         }
 
-        if(Invincible)
+        if(Invincible == true)
         {
             ApplyIframeCD();
         }
@@ -138,5 +144,33 @@ public class PlayerController : MonoBehaviour
         {
             Invincible = false;
         }
+        Debug.Log(IframeTimer);
+    }
+
+    void HandleSpellSelection()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) currentSpellIndex = 0;
+        if (Input.GetKeyDown(KeyCode.Alpha2)) currentSpellIndex = 1;
+        if (Input.GetKeyDown(KeyCode.Alpha3)) currentSpellIndex = 2;
+        if (Input.GetKeyDown(KeyCode.Alpha4)) currentSpellIndex = 3;
+        if (Input.GetKeyDown(KeyCode.Alpha5)) currentSpellIndex = 4;
+
+    }
+
+    void HandleSpellCasting()
+    {
+        if (isPaused == false)
+        {
+            if (Input.GetMouseButtonDown(0) && SpellHolder.availableSpells.Count > currentSpellIndex)
+            {
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 mousePos2 = new Vector2(mousePosition.x, mousePosition.y);
+                Debug.Log(mousePosition.x + " " + mousePosition.y);
+
+                Vector2 playerPosition = transform.position;
+                SpellHolder.availableSpells[currentSpellIndex].CastSpell(mousePos2, playerPosition);
+
+            }
+        } 
     }
 }

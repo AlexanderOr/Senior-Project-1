@@ -44,12 +44,16 @@ public class EnemyBehavior : MonoBehaviour
         else
         {
             EnemyDistance = Vector2.Distance(Player.transform.position, transform.position);
+            
             HasTarget = HitBox.Colliders.Count > 0;
 
             UpdateDirection();
             RotateToPlayer();
             Move();
         }
+
+        HasTarget = false;
+
     }
 
     private void UpdateDirection()
@@ -69,16 +73,16 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Move()
     {
-        if(EnemyHP != 0)
+        if(EnemyHP >= 0)
         {
             if (HasTarget == true)
             {
-                //attack anim and stuff
+                /*//attack anim and stuff
                 Animator.SetBool("InRange", true);
                 RB.velocity = transform.up * 0;
                 //do damage to player
                 playerController.playerHit();
-                return;
+                return;*/
             }
             else if (HasTarget == false)
             {
@@ -86,7 +90,7 @@ public class EnemyBehavior : MonoBehaviour
                 RB.velocity = transform.up * MoveSpeed;
             }
         }
-        else if (EnemyHP == 0)
+        else if (EnemyHP <= 0)
         {
             Animator.SetBool("HasHP", false);
             
@@ -97,4 +101,32 @@ public class EnemyBehavior : MonoBehaviour
     }
 
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Spells")
+        {
+            StartCoroutine(Damage());
+        }
+
+    }
+
+    IEnumerator Damage()
+    {
+        EnemyHP -= 10;
+        Debug.Log(EnemyHP);
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.name == "Player")
+        {
+            //attack anim and stuff
+            Animator.SetBool("InRange", true);
+            RB.velocity = transform.up * 0;
+            //do damage to player
+            playerController.playerHit();
+            return;
+        }
+    }
 }
