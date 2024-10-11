@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8058921908619601237}
   - component: {fileID: -2336885081277756726}
   - component: {fileID: 2346435018525297096}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: center
   m_TagString: Spells
   m_Icon: {fileID: 0}
@@ -141,6 +141,10 @@ PrefabInstance:
     - target: {fileID: 1248223336368617946, guid: 1dfede4ebea745342b9ae80cd39b32db, type: 3}
       propertyPath: m_Name
       value: BasicFireSpell
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248223336368617946, guid: 1dfede4ebea745342b9ae80cd39b32db, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

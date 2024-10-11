@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BasicIceSpell", menuName = "Spells/Basic Ice", order = 1)]
-public class basicIceSpells : Spells
+[CreateAssetMenu(fileName = "BasicArcaneSpell", menuName = "Spells/Basic Arcane", order = 1)]
+public class BasicArcaneSpells : Spells
 {
-    public GameObject BasicIcePrefab;
+    public GameObject BasicArcanePrefab;
     //public GameObject Player;
     public float range;
     public float angle;
@@ -18,7 +18,7 @@ public class basicIceSpells : Spells
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         // Instantiate and rotate the cone
-        GameObject BasicIce = Instantiate(BasicIcePrefab, playersPosition, Quaternion.Euler(0, 0, angle));
+        GameObject BasicIce = Instantiate(BasicArcanePrefab, playersPosition, Quaternion.Euler(0, 0, angle));
 
         // Optionally, add logic for duration, effects, etc.
         Debug.Log($"Casting {SpellName} towards {targetPosition}");

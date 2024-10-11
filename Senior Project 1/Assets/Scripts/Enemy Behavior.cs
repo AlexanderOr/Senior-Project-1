@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
 public class EnemyBehavior : MonoBehaviour
 {
     public int EnemyHP = 50;
-    private float MoveSpeed = 3f;
+    public float MoveSpeed = 3f;
     private float LookSpeed = 10f;
     public GameObject Player;
     public HitBox HitBox;
@@ -22,22 +23,20 @@ public class EnemyBehavior : MonoBehaviour
     public float EnemyAttackDistance = 1;
 
     public PlayerController playerController;
+    public GameObject EXPPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
         RB = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
         if (playerController.isPaused == true)
-        {
-            RB.velocity = transform.up * 0;
-        }
-        else if (gameObject.tag == "Frozen")
         {
             RB.velocity = transform.up * 0;
         }
@@ -93,7 +92,7 @@ public class EnemyBehavior : MonoBehaviour
         else if (EnemyHP <= 0)
         {
             Animator.SetBool("HasHP", false);
-            
+            Instantiate(EXPPrefab, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
             Destroy(gameObject);
         }
         
@@ -106,6 +105,27 @@ public class EnemyBehavior : MonoBehaviour
         if(collision.tag == "Spells")
         {
             StartCoroutine(Damage());
+            Destroy(collision.gameObject);
+
+            if (collision.name == "Pebble")
+            {
+                //knockback
+            }
+
+            if (collision.name == "Thorn Throw")
+            {
+                //bleed
+            }
+
+            if (collision.name == "Arcane Missle")
+            {
+                //pen
+            }
+
+            if (collision.name == "Snowball")
+            {
+                MoveSpeed -= 1f;
+            }
         }
 
     }
@@ -117,9 +137,9 @@ public class EnemyBehavior : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.name == "Player")
+        if(collision.gameObject.tag == "Player")
         {
             //attack anim and stuff
             Animator.SetBool("InRange", true);

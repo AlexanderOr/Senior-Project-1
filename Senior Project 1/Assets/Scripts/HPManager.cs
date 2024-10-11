@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 
 public class HPManager : MonoBehaviour
 {
+    public SpellHolder spellHolder;
     public Image health;
     public TMP_Text healthText;
     public PlayerController playerController;
@@ -25,8 +26,27 @@ public class HPManager : MonoBehaviour
     {
         if (spells != null)
         {
-            spellIcon1.sprite = spells.Icon;
-            spellIcon2.sprite = spells.Icon;
+            if (spellHolder.i == 0)
+            {
+                spellIcon1.sprite = spells.Icon;
+            }
+            else if (spellHolder.i == 1)
+            {
+                spellIcon2.sprite = spells.Icon;
+            }
+            else if (spellHolder.i == 2)
+            {
+                spellIcon3.sprite = spells.Icon;
+            }
+            else if (spellHolder.i == 3)
+            {
+                spellIcon4.sprite = spells.Icon;
+            }
+            else if (spellHolder.i == 4)
+            {
+                spellIcon5.sprite = spells.Icon;
+            }
+
         }
     }
 

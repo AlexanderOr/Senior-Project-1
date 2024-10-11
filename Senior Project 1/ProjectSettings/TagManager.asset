@@ -7,6 +7,8 @@ TagManager:
   - Frozen
   - EXP
   - Spells
+  - Enemy
+  - Detection
   layers:
   - Default
   - TransparentFX
@@ -16,8 +18,8 @@ TagManager:
   - UI
   - PlayerHitbox
   - EnemyHitbox
+  - SpellHitbox
   - XPHitbox
-  - 
   - 
   - 
   - 
