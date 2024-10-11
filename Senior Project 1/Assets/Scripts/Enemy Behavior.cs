@@ -14,6 +14,7 @@ public class EnemyBehavior : MonoBehaviour
     public HitBox HitBox;
     public bool HasTarget;
     public Animator Animator;
+    bool isBleeding = false;
 
     private Rigidbody2D RB;
 
@@ -53,6 +54,11 @@ public class EnemyBehavior : MonoBehaviour
 
         HasTarget = false;
 
+
+        if (isBleeding == true)
+        {
+            StartCoroutine(Bleeding());
+        }
     }
 
     private void UpdateDirection()
@@ -104,28 +110,29 @@ public class EnemyBehavior : MonoBehaviour
     {
         if(collision.tag == "Spells")
         {
-            StartCoroutine(Damage());
-            Destroy(collision.gameObject);
-
-            if (collision.name == "Pebble")
+            Debug.Log(collision.name);
+            if (collision.name == "Pebble(Clone)")
             {
                 //knockback
             }
 
-            if (collision.name == "Thorn Throw")
+            if (collision.name == "Thorn Throw(Clone)")
             {
-                //bleed
+                isBleeding = true;
             }
 
-            if (collision.name == "Arcane Missle")
+            if (collision.name == "Arcane Missle(Clone)")
             {
                 //pen
             }
 
-            if (collision.name == "Snowball")
+            if (collision.name == "Snowball(Clone)")
             {
                 MoveSpeed -= 1f;
             }
+
+            StartCoroutine(Damage());
+            Destroy(collision.gameObject);
         }
 
     }
@@ -135,6 +142,19 @@ public class EnemyBehavior : MonoBehaviour
         EnemyHP -= 10;
         Debug.Log(EnemyHP);
         yield return new WaitForSeconds(0.5f);
+        yield return null;
+    }
+
+    IEnumerator Bleeding()
+    {
+        EnemyHP -= 5;
+        yield return new WaitForSeconds(1f);
+        Debug.Log(EnemyHP);
+        EnemyHP -= 5;
+        Debug.Log(EnemyHP);
+        isBleeding = false;
+        yield return null;
+        Debug.Log(EnemyHP);
     }
 
     private void OnCollisionStay2D(Collision2D collision)

@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     float IframeTimer;
     public float Player_DodgeCD = 5;
     public float DodgeCDTimer;
-    float RollDist = 7;
+    public float RollDist = 10;
 
     public bool isPaused;
 
