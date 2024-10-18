@@ -36,7 +36,10 @@ public class PlayerController : MonoBehaviour
 
     //spells
     public SpellHolder SpellHolder;
-    private int currentSpellIndex = 0;
+    public int currentSpellIndex = 0;
+
+    //Spell Menu
+    public SpellMenuManager SpellMenuManager;
 
     private void Awake()
     {
@@ -128,6 +131,16 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             Player_EXP += 5;
         }
+
+        if(collision.tag == "Chest")
+        {
+            Destroy(collision.gameObject);
+            //open spell menu
+            SpellMenuManager.SpellMenu.SetActive(true);
+            //"pause" game
+            isPaused = true;
+        }
+
     }
 
     public void IframeCD()
@@ -162,7 +175,7 @@ public class PlayerController : MonoBehaviour
         if (isPaused == false)
         {
             if (Input.GetMouseButtonDown(0) && SpellHolder.availableSpells.Count > currentSpellIndex)
-            {
+            {E
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 mousePos2 = new Vector2(mousePosition.x, mousePosition.y);
                 Debug.Log(mousePosition.x + " " + mousePosition.y);

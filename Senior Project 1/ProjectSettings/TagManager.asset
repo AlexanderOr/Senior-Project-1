@@ -9,6 +9,8 @@ TagManager:
   - Spells
   - Enemy
   - Detection
+  - Chest
+  - Vortex
   layers:
   - Default
   - TransparentFX

@@ -21,8 +21,14 @@ public class HPManager : MonoBehaviour
     public Image spellIcon4;
     public Image spellIcon5;
 
+    public GameObject SpellBorder1;
+    public GameObject SpellBorder2;
+    public GameObject SpellBorder3;
+    public GameObject SpellBorder4;
+    public GameObject SpellBorder5;
 
-   public void SetSpell(Spells spells)
+
+    public void SetSpell(Spells spells)
     {
         if (spells != null)
         {
@@ -56,6 +62,54 @@ public class HPManager : MonoBehaviour
         XP.fillAmount = playerController.Player_EXP / 100f;
         healthText.text = playerController.Player_HP.ToString() + " / 100";
         XPText.text = playerController.Player_EXP.ToString() + " / 100";
+
+        switch (playerController.currentSpellIndex)
+        {
+            case 0: 
+                SpellBorder1.SetActive(true); 
+                SpellBorder2.SetActive(false);
+                SpellBorder3.SetActive(false);
+                SpellBorder4.SetActive(false);
+                SpellBorder5.SetActive(false);
+                break;
+            case 1:
+                SpellBorder1.SetActive(false);
+                SpellBorder2.SetActive(true);
+                SpellBorder3.SetActive(false);
+                SpellBorder4.SetActive(false);
+                SpellBorder5.SetActive(false);
+                break;
+            case 2:
+                SpellBorder1.SetActive(false);
+                SpellBorder2.SetActive(false);
+                SpellBorder3.SetActive(true);
+                SpellBorder4.SetActive(false);
+                SpellBorder5.SetActive(false);
+                break;
+            case 3:
+                SpellBorder1.SetActive(false);
+                SpellBorder2.SetActive(false);
+                SpellBorder3.SetActive(false);
+                SpellBorder4.SetActive(true);
+                SpellBorder5.SetActive(false);
+                break;
+            case 4:
+                SpellBorder1.SetActive(false);
+                SpellBorder2.SetActive(false);
+                SpellBorder3.SetActive(false);
+                SpellBorder4.SetActive(false);
+                SpellBorder5.SetActive(true);
+                break;
+            default:
+                SpellBorder1.SetActive(true);
+                SpellBorder2.SetActive(false);
+                SpellBorder3.SetActive(false);
+                SpellBorder4.SetActive(false);
+                SpellBorder5.SetActive(false);
+                break;
+
+        }
+        
     }
 
 }

@@ -7,7 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    public int EnemyHP = 50;
+    public float EnemyHP, EnemyMaxHP = 50;
     public float MoveSpeed = 3f;
     private float LookSpeed = 10f;
     public GameObject Player;
@@ -26,12 +26,15 @@ public class EnemyBehavior : MonoBehaviour
     public PlayerController playerController;
     public GameObject EXPPrefab;
 
+    [SerializeField] EnemyHPBar healthBar;
+
     // Start is called before the first frame update
     void Start()
     {
         RB = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
         Player = GameObject.FindGameObjectWithTag("Player");
+        healthBar = GetComponentInChildren<EnemyHPBar>();
     }
 
     // Update is called once per frame
@@ -41,7 +44,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             RB.velocity = transform.up * 0;
         }
-        else
+        else if (playerController.isPaused == false)
         {
             EnemyDistance = Vector2.Distance(Player.transform.position, transform.position);
             
@@ -78,7 +81,7 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Move()
     {
-        if(EnemyHP >= 0)
+        if(EnemyHP >= 0 && playerController.isPaused == false)
         {
             if (HasTarget == true)
             {
@@ -128,7 +131,10 @@ public class EnemyBehavior : MonoBehaviour
 
             if (collision.name == "Snowball(Clone)")
             {
-                MoveSpeed -= 1f;
+                if (MoveSpeed > 2)
+                {
+                    MoveSpeed -= 1f;
+                } 
             }
 
             StartCoroutine(Damage());
@@ -140,6 +146,7 @@ public class EnemyBehavior : MonoBehaviour
     IEnumerator Damage()
     {
         EnemyHP -= 10;
+        healthBar.UpdateHealthBar(EnemyHP, EnemyMaxHP);
         Debug.Log(EnemyHP);
         yield return new WaitForSeconds(0.5f);
         yield return null;

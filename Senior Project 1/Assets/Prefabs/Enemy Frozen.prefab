@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8014667428141638899}
   - component: {fileID: 4861153957319547423}
   - component: {fileID: 5147227726136552327}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DetectionZone
   m_TagString: Detection
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 5092682814641774309}
   - component: {fileID: 3113479836509577659}
   - component: {fileID: 8516966522654322040}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy Frozen
   m_TagString: Enemy
   m_Icon: {fileID: 0}
