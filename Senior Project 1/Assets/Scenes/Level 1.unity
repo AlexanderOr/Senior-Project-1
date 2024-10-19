@@ -878,7 +878,7 @@ MonoBehaviour:
   RunningEnemy: {fileID: 6259436750218440264, guid: 7ec3e4a7c9816804d9ad78acb89b9052, type: 3}
   stopSpawning: 0
   spawnTime: 1
-  spawnDelay: 10
+  spawnDelay: 5
   playerController: {fileID: 2179456359503594561}
 --- !u!4 &232820159
 Transform:

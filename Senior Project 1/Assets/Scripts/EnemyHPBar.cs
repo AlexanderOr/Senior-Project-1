@@ -18,7 +18,6 @@ public class EnemyHPBar : MonoBehaviour
     private void Start()
     {
         camera = Camera.main;
-        target = GameObject.FindWithTag("Player").transform;
     }
     // Update is called once per frame
     void Update()
