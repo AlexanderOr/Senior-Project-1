@@ -17,6 +17,12 @@ public class SpellHolder : MonoBehaviour
         Spells basicNatureSpell = Resources.Load<Spells>("Spells/BasicNatureSpell");
         Spells basicArcaneSpell = Resources.Load<Spells>("Spells/BasicArcaneSpell");
         Spells basicRockSpell = Resources.Load<Spells>("Spells/BasicRockSpell");
+        Spells AdvancedFireSpell = Resources.Load<Spells>("Spells/FireLance");
+        Spells AdvancedIceSpell = Resources.Load<Spells>("Spells/AdvancedIceSpell");
+        Spells AdvancedRockSpell = Resources.Load<Spells>("Spells/AdvancedRockSpell");
+        availableSpells.Add(AdvancedFireSpell);
+        availableSpells.Add(AdvancedIceSpell);
+        availableSpells.Add(AdvancedRockSpell);
         availableSpells.Add(basicFireSpell);
         availableSpells.Add(basicIceSpell);
         availableSpells.Add(basicNatureSpell);

@@ -18,10 +18,12 @@ public class BasicNatureSpells : Spells
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         // Instantiate and rotate the cone
-        GameObject BasicIce = Instantiate(BasicNaturePrefab, playersPosition, Quaternion.Euler(0, 0, angle));
+        GameObject BasicNature = Instantiate(BasicNaturePrefab, playersPosition, Quaternion.Euler(0, 0, angle));
 
         // Optionally, add logic for duration, effects, etc.
         Debug.Log($"Casting {SpellName} towards {targetPosition}");
 
     }
 }
+
+

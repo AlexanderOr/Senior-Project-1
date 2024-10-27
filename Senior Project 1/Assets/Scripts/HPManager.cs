@@ -13,6 +13,7 @@ public class HPManager : MonoBehaviour
     public PlayerController playerController;
     public Image XP;
     public TMP_Text XPText;
+    public TMP_Text LevelText;
 
     //spells
     public Image spellIcon1;
@@ -60,8 +61,9 @@ public class HPManager : MonoBehaviour
     {
         health.fillAmount = playerController.Player_HP / 100f;
         XP.fillAmount = playerController.Player_EXP / 100f;
-        healthText.text = playerController.Player_HP.ToString() + " / 100";
-        XPText.text = playerController.Player_EXP.ToString() + " / 100";
+        healthText.text = playerController.Player_HP.ToString() + " / " + playerController.Player_MaxHP.ToString();
+        XPText.text = playerController.Player_EXP.ToString() + " / " + playerController.Player_MaxEXP.ToString();
+        LevelText.text = "Level: " + playerController.Player_Level.ToString();
 
         switch (playerController.currentSpellIndex)
         {

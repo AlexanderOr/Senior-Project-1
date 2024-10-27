@@ -10,7 +10,7 @@ public class SpellGoForward : MonoBehaviour
     private Vector3 mousePos;
     private Camera mainCam;
     private Rigidbody2D rb;
-    public float force = 5;
+    public float force = 7;
     public float speed = .5f;
 
     private void Awake()

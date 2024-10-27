@@ -18,11 +18,13 @@ public class SpellMenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            SpellMenu.SetActive(true);
-            playerController.isPaused = true;
-        }
+        
+    }
+
+    public void Activate()
+    {
+        SpellMenu.SetActive(true);
+        playerController.isPaused = true;
     }
 
     public void Confirm()

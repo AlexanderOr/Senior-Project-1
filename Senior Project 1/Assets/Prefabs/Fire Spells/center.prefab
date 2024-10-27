@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c65f2475b19f7c4faa2300258d7985a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Duration: 0.5
 --- !u!68 &2346435018525297096
 EdgeCollider2D:
   m_ObjectHideFlags: 0

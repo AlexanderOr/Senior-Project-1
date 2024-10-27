@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DeleteSpell : MonoBehaviour
 {
+    public float Duration;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -12,7 +13,7 @@ public class DeleteSpell : MonoBehaviour
 
     IEnumerator Destroy()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(Duration);
         Object.Destroy(this.gameObject);
     }
 }

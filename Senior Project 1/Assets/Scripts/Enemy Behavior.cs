@@ -37,6 +37,12 @@ public class EnemyBehavior : MonoBehaviour
         healthBar = GetComponentInChildren<EnemyHPBar>();
     }
 
+    private void Awake()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+        playerController = Player.GetComponent<PlayerController>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -117,16 +123,21 @@ public class EnemyBehavior : MonoBehaviour
             if (collision.name == "Pebble(Clone)")
             {
                 //knockback
+                Destroy(collision.gameObject);
+                StartCoroutine(Damage(10));
             }
 
             if (collision.name == "Thorn Throw(Clone)")
             {
                 isBleeding = true;
+                Destroy(collision.gameObject);
+                StartCoroutine(Damage(10));
             }
 
             if (collision.name == "Arcane Missle(Clone)")
             {
                 //pen
+                StartCoroutine(Damage(10));
             }
 
             if (collision.name == "Snowball(Clone)")
@@ -134,22 +145,42 @@ public class EnemyBehavior : MonoBehaviour
                 if (MoveSpeed > 2)
                 {
                     MoveSpeed -= 1f;
-                } 
+                }
+                Destroy(collision.gameObject);
+                StartCoroutine(Damage(10));
             }
 
-            StartCoroutine(Damage());
-            Destroy(collision.gameObject);
+            if (collision.name == "Ice Zone(Clome)")
+            {
+                if (MoveSpeed > 2)
+                {
+                    MoveSpeed -= 1f;
+                }
+                StartCoroutine(Damage(20));
+            }
+
+            if (collision.name == "Fire Lance(Clone)")
+            {
+                Destroy(collision.gameObject);
+                StartCoroutine(Damage(20));
+            }
+
+            if (collision.name == "Upheaval(Clone)")
+            {
+                StartCoroutine(Damage(20));
+            }
+            
+            
         }
 
     }
 
-    IEnumerator Damage()
+    IEnumerator Damage(int DamageAmount)
     {
-        EnemyHP -= 10;
+        EnemyHP -= DamageAmount;
         healthBar.UpdateHealthBar(EnemyHP, EnemyMaxHP);
         Debug.Log(EnemyHP);
         yield return new WaitForSeconds(0.5f);
-        yield return null;
     }
 
     IEnumerator Bleeding()

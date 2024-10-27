@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    int Player_MaxHP = 100;
+    public int Player_MaxHP = 100;
     public int Player_HP = 100;
-    int Player_MaxEXP = 100;
+    public int Player_MaxEXP = 50;
     public int Player_EXP = 0;
     public int Player_Level = 1;
     bool Invincible = false;
@@ -52,6 +52,11 @@ public class PlayerController : MonoBehaviour
         //spells
         HandleSpellSelection();
         HandleSpellCasting();
+
+        if (Player_EXP >= Player_MaxEXP)
+        {
+            LevelUp();
+        }
 
 
         //movement
@@ -185,5 +190,14 @@ public class PlayerController : MonoBehaviour
 
             }
         } 
+    }
+
+    void LevelUp()
+    {
+        Player_Level += 1;
+        Player_MaxEXP += (10 * Player_Level);
+        Player_EXP = 0;
+        SpellMenuManager.Activate();
+
     }
 }
