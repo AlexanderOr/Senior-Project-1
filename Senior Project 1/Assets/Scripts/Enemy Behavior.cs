@@ -134,10 +134,22 @@ public class EnemyBehavior : MonoBehaviour
                 StartCoroutine(Damage(10));
             }
 
+            if (collision.name == "Leaf Orb(Clone)")
+            {
+                isBleeding = true;
+                Destroy(collision.gameObject);
+                StartCoroutine(Damage(30));
+            }
+
             if (collision.name == "Arcane Missle(Clone)")
             {
                 //pen
                 StartCoroutine(Damage(10));
+            }
+
+            if (collision.name == "Disintegrate(Clone)")
+            {
+                StartCoroutine(Damage(20));
             }
 
             if (collision.name == "Snowball(Clone)")
@@ -150,7 +162,7 @@ public class EnemyBehavior : MonoBehaviour
                 StartCoroutine(Damage(10));
             }
 
-            if (collision.name == "Ice Zone(Clome)")
+            if (collision.name == "Ice Zone(Clone)")
             {
                 if (MoveSpeed > 2)
                 {
@@ -159,10 +171,15 @@ public class EnemyBehavior : MonoBehaviour
                 StartCoroutine(Damage(20));
             }
 
-            if (collision.name == "Fire Lance(Clone)")
+            if (collision.name == "FireLance(Clone)")
             {
                 Destroy(collision.gameObject);
                 StartCoroutine(Damage(20));
+            }
+
+            if (collision.name == "FireCone(Clone)")
+            {
+                StartCoroutine(Damage(10));
             }
 
             if (collision.name == "Upheaval(Clone)")

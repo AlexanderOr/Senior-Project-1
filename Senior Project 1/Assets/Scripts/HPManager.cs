@@ -59,8 +59,8 @@ public class HPManager : MonoBehaviour
 
     void Update()
     {
-        health.fillAmount = playerController.Player_HP / 100f;
-        XP.fillAmount = playerController.Player_EXP / 100f;
+        health.fillAmount = playerController.Player_HP / playerController.Player_MaxHP;
+        XP.fillAmount = playerController.Player_EXP / playerController.Player_MaxEXP;
         healthText.text = playerController.Player_HP.ToString() + " / " + playerController.Player_MaxHP.ToString();
         XPText.text = playerController.Player_EXP.ToString() + " / " + playerController.Player_MaxEXP.ToString();
         LevelText.text = "Level: " + playerController.Player_Level.ToString();

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d87d1fd12aaf1040809721dccc33717, type: 3}
+  m_Name: AdvancedIceSpell
+  m_EditorClassIdentifier: 
+  SpellName: Ice Zone
+  Level: 1
+  type: 1
+  CastTime: 2
+  CoolDown: 5
+  Icon: {fileID: 0}
+  AdvancedIcePrefab: {fileID: 5644333496711824263, guid: 68c9eef53ae11774885eb54bb58622dd, type: 3}
+  range: 0
+  angle: 0

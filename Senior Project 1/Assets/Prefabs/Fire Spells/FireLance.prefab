@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 3773058700202614368}
   - component: {fileID: -829878299136401023}
   - component: {fileID: -6747165565417812150}
+  - component: {fileID: 6808600860614840726}
   m_Layer: 8
-  m_Name: Fire Lance
+  m_Name: FireLance
   m_TagString: Spells
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,6 +76,56 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!60 &6808600860614840726
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180221944459314816}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.0053186417, y: -0.14877224}
+      - {x: -0.5096298, y: -1.0099432}
+      - {x: -0.23677152, y: -2.0162916}
+      - {x: 0.24740851, y: -2.0269277}
+      - {x: 0.5096302, y: -1.0152612}
+  m_UseDelaunayMesh: 0
 --- !u!1 &2440292526540607970
 GameObject:
   m_ObjectHideFlags: 0
