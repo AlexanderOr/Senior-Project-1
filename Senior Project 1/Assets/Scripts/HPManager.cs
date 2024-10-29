@@ -59,11 +59,11 @@ public class HPManager : MonoBehaviour
 
     void Update()
     {
-        health.fillAmount = playerController.Player_HP / playerController.Player_MaxHP;
-        XP.fillAmount = playerController.Player_EXP / playerController.Player_MaxEXP;
-        healthText.text = playerController.Player_HP.ToString() + " / " + playerController.Player_MaxHP.ToString();
-        XPText.text = playerController.Player_EXP.ToString() + " / " + playerController.Player_MaxEXP.ToString();
-        LevelText.text = "Level: " + playerController.Player_Level.ToString();
+        health.fillAmount = PlayerController.Player_HP / PlayerController.Player_MaxHP;
+        XP.fillAmount = PlayerController.Player_EXP / PlayerController.Player_MaxEXP;
+        healthText.text = PlayerController.Player_HP.ToString() + " / " + PlayerController.Player_MaxHP.ToString();
+        XPText.text = PlayerController.Player_EXP.ToString() + " / " + PlayerController.Player_MaxEXP.ToString();
+        LevelText.text = "Level: " + PlayerController.Player_Level.ToString();
 
         switch (playerController.currentSpellIndex)
         {

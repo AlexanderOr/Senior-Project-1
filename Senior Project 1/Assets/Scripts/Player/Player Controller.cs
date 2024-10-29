@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public int Player_MaxHP = 100;
-    public int Player_HP = 100;
-    public int Player_MaxEXP = 50;
-    public int Player_EXP = 0;
-    public int Player_Level = 1;
+    public static int Player_MaxHP = 100;
+    public static int Player_HP = 100;
+    public static int Player_MaxEXP = 50;
+    public static int Player_EXP = 0;
+    public static int Player_Level = 1;
     bool Invincible = false;
     float Iframes = 1;
     float IframeTimer;
@@ -115,6 +115,11 @@ public class PlayerController : MonoBehaviour
         {
             ApplyIframeCD();
         }
+
+        if(Player_HP > Player_MaxHP)
+        {
+            Player_HP = Player_MaxHP;
+        }
     }
 
     public void playerHit()
@@ -199,5 +204,14 @@ public class PlayerController : MonoBehaviour
         Player_EXP = 0;
         SpellMenuManager.Activate();
 
+    }
+
+    public void Heal()
+    {
+        if (Player_HP < Player_MaxHP)
+        {
+            Player_HP += 15;
+        }
+        
     }
 }

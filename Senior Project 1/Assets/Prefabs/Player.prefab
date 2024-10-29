@@ -283,7 +283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4079b9b859043844dbf073b958fb47ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player_HP: 90
+  Player_MaxHP: 100
+  Player_HP: 100
+  Player_MaxEXP: 50
   Player_EXP: 0
   Player_Level: 1
   Player_DodgeCD: 5
@@ -294,6 +296,7 @@ MonoBehaviour:
   dodgeCoolDown: {fileID: 0}
   MoveSpeed: 5
   SpellHolder: {fileID: 0}
+  currentSpellIndex: 0
   SpellMenuManager: {fileID: 0}
 --- !u!50 &6813885579948849164
 Rigidbody2D:
