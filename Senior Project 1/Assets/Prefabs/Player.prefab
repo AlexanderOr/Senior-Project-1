@@ -167,7 +167,7 @@ Transform:
   m_GameObject: {fileID: 3806258787461687420}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 23.171234, y: 5.503849, z: 0}
   m_LocalScale: {x: 4.5, y: 4.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -283,11 +283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4079b9b859043844dbf073b958fb47ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player_MaxHP: 100
-  Player_HP: 100
-  Player_MaxEXP: 50
-  Player_EXP: 0
-  Player_Level: 1
   Player_DodgeCD: 5
   DodgeCDTimer: 0
   RollDist: 10

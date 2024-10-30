@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc3943ea0a361e34ebb48c9ec21d173a, type: 3}
+  m_Name: UtilityArcaneSpell
+  m_EditorClassIdentifier: 
+  SpellName: Shift
+  Level: 1
+  type: 4
+  CastTime: 1
+  CoolDown: 20
+  Icon: {fileID: 0}
+  UtilityArcanePrefab: {fileID: 0}
+  Player: {fileID: 3806258787461687420, guid: 51037a69ea3ad484eb110580a2932357, type: 3}
+  Playercontroller: {fileID: 7878445409492185271, guid: 51037a69ea3ad484eb110580a2932357, type: 3}
+  range: 0
+  angle: 0

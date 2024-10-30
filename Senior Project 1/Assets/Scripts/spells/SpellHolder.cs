@@ -11,6 +11,10 @@ public class SpellHolder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        int currentSpellCount = 0;
+
+
+
         availableSpells = new List<Spells>();
         Spells basicFireSpell = Resources.Load<Spells>("Spells/FireCone");
         Spells basicIceSpell = Resources.Load<Spells>("Spells/BasicIceSpell");
@@ -23,6 +27,10 @@ public class SpellHolder : MonoBehaviour
         Spells AdvancedArcaneSpell = Resources.Load<Spells>("Spells/AdvancedArcaneSpell");
         Spells AdvancedNatureSpell = Resources.Load<Spells>("Spells/AdvancedNatureSpell");
         Spells UtilityNatureSpell = Resources.Load<Spells>("Spells/UtilityNatureSpell");
+        Spells UtilityArcaneSpell = Resources.Load<Spells>("Spells/UtilityArcaneSpell");
+        Spells UtilityRockSpell = Resources.Load<Spells>("Spells/UtilityRockSpell");
+        availableSpells.Add(UtilityRockSpell);
+        availableSpells.Add(UtilityArcaneSpell);
         availableSpells.Add(UtilityNatureSpell);
         availableSpells.Add(AdvancedFireSpell);
         availableSpells.Add(AdvancedIceSpell);

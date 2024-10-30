@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea99956bf36eed3489084283705f9f73, type: 3}
+  m_Name: UtilityRockSpell
+  m_EditorClassIdentifier: 
+  SpellName: 
+  Level: 1
+  type: 2
+  CastTime: 2
+  CoolDown: 20
+  Icon: {fileID: 0}
+  UtilityRockPrefab: {fileID: 7142360201937261360, guid: f16e3979055d03d4c843686cbf7b431a, type: 3}
+  Player: {fileID: 0}
+  Playercontroller: {fileID: 7878445409492185271, guid: 51037a69ea3ad484eb110580a2932357, type: 3}
+  Duration: 2
+  range: 0
+  angle: 0

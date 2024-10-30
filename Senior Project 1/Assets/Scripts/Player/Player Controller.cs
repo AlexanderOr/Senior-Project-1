@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 
@@ -12,11 +13,13 @@ public class PlayerController : MonoBehaviour
     public static int Player_EXP = 0;
     public static int Player_Level = 1;
     bool Invincible = false;
-    float Iframes = 1;
+    float Iframes = 0.5f;
     float IframeTimer;
     public float Player_DodgeCD = 5;
     public float DodgeCDTimer;
     public float RollDist = 10;
+    bool Immune = false;
+    float ImmuneTimer;
 
     public bool isPaused;
 
@@ -45,6 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         RB = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        //Player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
@@ -120,11 +124,20 @@ public class PlayerController : MonoBehaviour
         {
             Player_HP = Player_MaxHP;
         }
+
+        if (Immune == true)
+        {
+            ImmuneTimer -= Time.deltaTime;
+            Debug.Log(ImmuneTimer);
+            Debug.Log(Immune);
+
+            if(ImmuneTimer <= 0) { Immune = false; }
+        }
     }
 
     public void playerHit()
     {
-        if (Invincible == false && isPaused == false)
+        if (Invincible == false && isPaused == false && Immune == false)
         {
             Debug.Log("hit");
             Player_HP = Player_HP - 5;
@@ -213,5 +226,16 @@ public class PlayerController : MonoBehaviour
             Player_HP += 15;
         }
         
+    }
+
+    public void Teleport(Vector2 mousePos2)
+    {
+        transform.position = mousePos2;
+    }
+
+    public void ImmuneRock(float Duration)
+    {
+        Immune = true;
+        ImmuneTimer = Duration;
     }
 }
