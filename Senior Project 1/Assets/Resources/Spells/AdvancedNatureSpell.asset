@@ -13,11 +13,17 @@ MonoBehaviour:
   m_Name: AdvancedNatureSpell
   m_EditorClassIdentifier: 
   SpellName: Leaf Orb
+  description: Casts an orb of sharp nature magic towards your target dealing X damage
+    and bleeding any enemies hit.
   Level: 1
   type: 3
   CastTime: 2
   CoolDown: 5
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: b0fc20a9ba0fff944b4fc6f8d2ecf549, type: 3}
+  Damage: 15
+  isBleeding: 1
+  isStunned: 0
+  speedReduction: 0
   AdvancedNaturePrefab: {fileID: 2407930709059113448, guid: a465ec36bdd5e764daad4c64938c2224, type: 3}
   range: 0
   angle: 0

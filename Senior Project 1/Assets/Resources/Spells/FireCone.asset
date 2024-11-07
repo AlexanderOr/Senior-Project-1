@@ -13,11 +13,16 @@ MonoBehaviour:
   m_Name: FireCone
   m_EditorClassIdentifier: 
   SpellName: Fire Cone
+  description: Expells a cone of fire from your hands dealing X damage.
   Level: 1
   type: 0
   CastTime: 0
   CoolDown: 1
   Icon: {fileID: 21300000, guid: 1887ddd506e5f9143b19ec8d94649f43, type: 3}
+  Damage: 10
+  isBleeding: 0
+  isStunned: 0
+  speedReduction: 0
   FireConePrefab: {fileID: 609070407655874589, guid: 6c653d64531f915498c83a4b8b8a7c6c, type: 3}
   range: 10
   angle: 45

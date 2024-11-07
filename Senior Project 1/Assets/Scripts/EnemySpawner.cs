@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject Enemy;
     public GameObject RunningEnemy;
+    public GameObject RangedEnemy;
     public bool stopSpawning = false;
     public float spawnTime;
     public float spawnDelay;

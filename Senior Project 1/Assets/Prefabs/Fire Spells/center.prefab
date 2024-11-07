@@ -147,11 +147,72 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1248223336368617946, guid: 1dfede4ebea745342b9ae80cd39b32db, type: 3}
+      propertyPath: m_TagString
+      value: Spells
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1248223336368617946, guid: 1dfede4ebea745342b9ae80cd39b32db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2362759570080405430}
   m_SourcePrefab: {fileID: 100100000, guid: 1dfede4ebea745342b9ae80cd39b32db, type: 3}
+--- !u!1 &859479249704588550 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1248223336368617946, guid: 1dfede4ebea745342b9ae80cd39b32db, type: 3}
+  m_PrefabInstance: {fileID: 1927522293469981916}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &2362759570080405430
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859479249704588550}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 0.5}
+    newSize: {x: 1, y: 0.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 0.25}
+      - {x: -0.5, y: 0}
+      - {x: 0, y: -0.25}
+      - {x: 0.5, y: 0}
+  m_UseDelaunayMesh: 0
 --- !u!4 &1663724976803681268 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 984408553088925480, guid: 1dfede4ebea745342b9ae80cd39b32db, type: 3}

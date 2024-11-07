@@ -18,6 +18,7 @@ public class VortexTrigger : MonoBehaviour
         {
             //StartCoroutine(PullExpObjects(collision.transform));
             EXPTracker.VortexActive = true;
+            EXPTracker.VortexTimer = 5f;
             Debug.Log("vortex on");
             Timer = 0f;
             Destroy(this.gameObject);

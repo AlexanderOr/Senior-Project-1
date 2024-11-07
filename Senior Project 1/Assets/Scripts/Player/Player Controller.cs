@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public static int Player_HP = 100;
     public static int Player_MaxEXP = 50;
     public static int Player_EXP = 0;
-    public static int Player_Level = 1;
+    public static int Player_Level = 0;
     bool Invincible = false;
     float Iframes = 0.5f;
     float IframeTimer;
@@ -49,6 +49,11 @@ public class PlayerController : MonoBehaviour
         RB = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         //Player = GameObject.FindGameObjectWithTag("Player").transform;
+        Player_MaxEXP = 50;
+        Player_Level = 0;
+        Player_EXP = 0;
+        Player_HP = 100;
+        Player_MaxHP = 100;
     }
 
     private void Update()
@@ -133,6 +138,7 @@ public class PlayerController : MonoBehaviour
 
             if(ImmuneTimer <= 0) { Immune = false; }
         }
+
     }
 
     public void playerHit()
@@ -159,9 +165,15 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             //open spell menu
-            SpellMenuManager.SpellMenu.SetActive(true);
+            SpellHolder.LevelUp();
             //"pause" game
             isPaused = true;
+        }
+
+        if(collision.tag == "EnemyBullet")
+        {
+            playerHit();
+            Destroy(collision.gameObject);
         }
 
     }
@@ -197,14 +209,14 @@ public class PlayerController : MonoBehaviour
     {
         if (isPaused == false)
         {
-            if (Input.GetMouseButtonDown(0) && SpellHolder.availableSpells.Count > currentSpellIndex)
+            if (Input.GetMouseButtonDown(0) && SpellHolder.playerSpells.Count > currentSpellIndex)
             {
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 mousePos2 = new Vector2(mousePosition.x, mousePosition.y);
                 Debug.Log(mousePosition.x + " " + mousePosition.y);
 
                 Vector2 playerPosition = transform.position;
-                SpellHolder.availableSpells[currentSpellIndex].CastSpell(mousePos2, playerPosition);
+                SpellHolder.playerSpell[currentSpellIndex].CastSpell(mousePos2, playerPosition);
 
             }
         } 
@@ -212,10 +224,10 @@ public class PlayerController : MonoBehaviour
 
     void LevelUp()
     {
-        Player_Level += 1;
+        //Player_Level++;
         Player_MaxEXP += (10 * Player_Level);
         Player_EXP = 0;
-        SpellMenuManager.Activate();
+        SpellHolder.LevelUp();
 
     }
 

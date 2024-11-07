@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: UtilityArcaneSpell
   m_EditorClassIdentifier: 
   SpellName: Shift
+  description: Warp the space around you to teleport yourself to the cursor
   Level: 1
   type: 4
   CastTime: 1

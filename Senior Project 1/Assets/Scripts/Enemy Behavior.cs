@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
@@ -117,9 +118,8 @@ public class EnemyBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Spells")
+        if (collision.tag == "Spells")
         {
-            Debug.Log(collision.name);
             if (collision.name == "Pebble(Clone)")
             {
                 //knockback
@@ -177,7 +177,7 @@ public class EnemyBehavior : MonoBehaviour
                 StartCoroutine(Damage(20));
             }
 
-            if (collision.name == "FireCone(Clone)")
+            if (collision.name == "center(Clone)")
             {
                 StartCoroutine(Damage(10));
             }
@@ -186,8 +186,8 @@ public class EnemyBehavior : MonoBehaviour
             {
                 StartCoroutine(Damage(20));
             }
-            
-            
+
+
         }
 
     }
@@ -225,3 +225,7 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 }
+
+
+
+/**/

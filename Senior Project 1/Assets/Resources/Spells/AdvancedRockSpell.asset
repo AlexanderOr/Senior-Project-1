@@ -13,11 +13,17 @@ MonoBehaviour:
   m_Name: AdvancedRockSpell
   m_EditorClassIdentifier: 
   SpellName: Upheaval
+  description: Casts a boulder into the ground at the target location dealing X damage
+    and pushing enemies back.
   Level: 1
   type: 2
   CastTime: 2
   CoolDown: 5
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: decdc340a7f3ff24a90185c2f1bca55f, type: 3}
+  Damage: 20
+  isBleeding: 0
+  isStunned: 0
+  speedReduction: 0
   AdvancedRockPrefab: {fileID: 7125610737025763080, guid: 740811c6ec370dc4cb2286052bcabc82, type: 3}
   range: 0
   angle: 0

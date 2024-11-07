@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d25e58b13e3a0c4587b344e0f01d990, type: 3}
   m_Name: UtilityNatureSpell
   m_EditorClassIdentifier: 
-  SpellName: 
+  SpellName: Heal
+  description: Heal yourself using nature magic for 15 Health
   Level: 1
   type: 3
   CastTime: 2
   CoolDown: 15
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 98fdba2903bfab145b202f64bc8e27a5, type: 3}
   UtilityNaturePrefab: {fileID: 1991071348108204637, guid: edb94c578a4c3694c8bc7fef6da15896, type: 3}
   Player: {fileID: 3806258787461687420, guid: 51037a69ea3ad484eb110580a2932357, type: 3}
   Playercontroller: {fileID: 7878445409492185271, guid: 51037a69ea3ad484eb110580a2932357, type: 3}

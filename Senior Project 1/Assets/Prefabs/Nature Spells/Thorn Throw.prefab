@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9a43db4fc71164bbfc941d2fccabb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 5
+  force: 10
   speed: 0.5
 --- !u!60 &8612816995348995810
 PolygonCollider2D:

@@ -9,6 +9,7 @@ public class EXPTracker : MonoBehaviour
     public GameObject Player;
     private Transform player;
     public float pullSpeed = 10f;
+    public static float VortexTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,12 @@ public class EXPTracker : MonoBehaviour
             Vector2 newPos = Vector2.MoveTowards(transform.position, player.position, pullSpeed * Time.deltaTime);
 
             transform.position = newPos;
+            VortexTimer -= Time.deltaTime;
+        }
+
+        if (VortexTimer <= 0)
+        {
+            VortexActive = false;
         }
     }
 }

@@ -13,11 +13,17 @@ MonoBehaviour:
   m_Name: BasicRockSpell
   m_EditorClassIdentifier: 
   SpellName: Pebble
+  description: casts a sturdy rock towards your target dealing X damage and slighly
+    pushing bakc any enemies hit
   Level: 1
   type: 2
   CastTime: 0
   CoolDown: 1
   Icon: {fileID: 21300000, guid: 6a670e7d9ae8f254b9398bb8e5d11317, type: 3}
+  Damage: 10
+  isBleeding: 0
+  isStunned: 0
+  speedReduction: 0
   BasicRockPrefab: {fileID: 1177943988684683034, guid: a5b8955f5b6baa0488f0006a02e53dac, type: 3}
   range: 10
   angle: 0

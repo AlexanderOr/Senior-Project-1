@@ -11,6 +11,7 @@ TagManager:
   - Detection
   - Chest
   - Vortex
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
