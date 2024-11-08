@@ -1,10 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEngine.GraphicsBuffer;
 
 public class EnemyBehavior : MonoBehaviour
 {
@@ -120,7 +116,77 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (collision.tag == "Spells")
         {
-            if (collision.name == "Pebble(Clone)")
+
+            Spellinstance spellInstance = collision.GetComponent<Spellinstance>();
+            if (spellInstance != null)
+            {
+                Spells spellData = spellInstance.spellData;
+
+                int finalDamage = spellData.Damage + (5 * (spellData.Level - 1));
+                // Apply damage based on the spell's damage property
+                StartCoroutine(Damage(finalDamage));
+
+                // Apply status effects based on the spell's properties
+                if (spellData.isBleeding)
+                {
+                    isBleeding = true;
+                }
+                if (spellData.isStunned)
+                {
+                    //isStunned = true;
+                }
+                if (spellData.speedReduction > 0f)
+                {
+                    MoveSpeed = Mathf.Max(2f, MoveSpeed - spellData.speedReduction);
+                }
+
+                // Destroy the spell object after applying its effects
+                Destroy(collision.gameObject);
+
+            }
+
+
+        }
+
+    }
+
+    IEnumerator Damage(int DamageAmount)
+    {
+        EnemyHP -= DamageAmount;
+        healthBar.UpdateHealthBar(EnemyHP, EnemyMaxHP);
+        Debug.Log(EnemyHP);
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    IEnumerator Bleeding()
+    {
+        EnemyHP -= 5;
+        yield return new WaitForSeconds(1f);
+        Debug.Log(EnemyHP);
+        EnemyHP -= 5;
+        Debug.Log(EnemyHP);
+        isBleeding = false;
+        yield return null;
+        Debug.Log(EnemyHP);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            //attack anim and stuff
+            Animator.SetBool("InRange", true);
+            RB.velocity = transform.up * 0;
+            //do damage to player
+            playerController.playerHit();
+            return;
+        }
+    }
+}
+
+
+
+/*if (collision.name == "Pebble(Clone)")
             {
                 //knockback
                 Destroy(collision.gameObject);
@@ -185,47 +251,4 @@ public class EnemyBehavior : MonoBehaviour
             if (collision.name == "Upheaval(Clone)")
             {
                 StartCoroutine(Damage(20));
-            }
-
-
-        }
-
-    }
-
-    IEnumerator Damage(int DamageAmount)
-    {
-        EnemyHP -= DamageAmount;
-        healthBar.UpdateHealthBar(EnemyHP, EnemyMaxHP);
-        Debug.Log(EnemyHP);
-        yield return new WaitForSeconds(0.5f);
-    }
-
-    IEnumerator Bleeding()
-    {
-        EnemyHP -= 5;
-        yield return new WaitForSeconds(1f);
-        Debug.Log(EnemyHP);
-        EnemyHP -= 5;
-        Debug.Log(EnemyHP);
-        isBleeding = false;
-        yield return null;
-        Debug.Log(EnemyHP);
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "Player")
-        {
-            //attack anim and stuff
-            Animator.SetBool("InRange", true);
-            RB.velocity = transform.up * 0;
-            //do damage to player
-            playerController.playerHit();
-            return;
-        }
-    }
-}
-
-
-
-/**/
+            }*/

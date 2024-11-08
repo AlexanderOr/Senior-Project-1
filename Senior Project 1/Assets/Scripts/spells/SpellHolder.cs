@@ -103,7 +103,7 @@ public class SpellHolder : MonoBehaviour
         if (PlayerController.Player_Level >= 1) possibleSpells.AddRange(basicSpells);
         if (PlayerController.Player_Level >= 3) possibleSpells.AddRange(advancedSpells);
         if (PlayerController.Player_Level >= 5) possibleSpells.AddRange(utilitySpells);
-        if (PlayerController.Player_Level >= 10) possibleSpells.AddRange(ultimateSpells);
+        if (PlayerController.Player_Level >= 7) possibleSpells.AddRange(ultimateSpells);
 
         return possibleSpells;
     }

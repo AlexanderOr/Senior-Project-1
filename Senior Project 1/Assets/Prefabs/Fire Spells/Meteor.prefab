@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3437523042699108784}
   - component: {fileID: 2047717908330887659}
   - component: {fileID: 3889229216139609686}
+  - component: {fileID: -2580892750620158623}
   m_Layer: 8
   m_Name: Meteor
   m_TagString: Spells
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.9924528, g: 0.33772546, b: 0, a: 1}
   m_FlipX: 0
@@ -134,3 +135,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Duration: 2
+--- !u!114 &-2580892750620158623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5265232925150470296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb6576d131795d4ba2ce580cfaf7b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellData: {fileID: 11400000, guid: 040e60cd181e3e3439713f7d6eb90a6c, type: 2}

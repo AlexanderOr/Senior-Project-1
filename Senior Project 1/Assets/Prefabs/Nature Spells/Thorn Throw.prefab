@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 8535898394553277479}
   - component: {fileID: 8612816995348995810}
   - component: {fileID: -458540417323281051}
+  - component: {fileID: 5322240853716802673}
   m_Layer: 8
   m_Name: Thorn Throw
   m_TagString: Spells
@@ -438,6 +439,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &5322240853716802673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406877534379143180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb6576d131795d4ba2ce580cfaf7b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellData: {fileID: 11400000, guid: 33f651202187ac14da43115250388fe8, type: 2}
 --- !u!1 &4674806319758263071
 GameObject:
   m_ObjectHideFlags: 0

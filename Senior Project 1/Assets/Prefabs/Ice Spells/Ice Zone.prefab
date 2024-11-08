@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3075804903325884010}
   - component: {fileID: 2241432754842250492}
   - component: {fileID: 6165512941329452556}
+  - component: {fileID: -5810713201399612561}
   m_Layer: 8
   m_Name: Ice Zone
   m_TagString: Spells
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.5238519, g: 0.8490566, b: 0.83069867, a: 1}
   m_FlipX: 0
@@ -134,3 +135,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-5810713201399612561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5644333496711824263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb6576d131795d4ba2ce580cfaf7b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellData: {fileID: 11400000, guid: f37aa027b5ba9dc488a6a7bd0a2a969b, type: 2}

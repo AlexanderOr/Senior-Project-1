@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BasicArcaneSpell", menuName = "Spells/Basic Arcane", order = 1)]
-public class BasicArcaneSpells : Spells
+[CreateAssetMenu(fileName = "UltimateNatureSpell", menuName = "Spells/Ultimate Nature", order = 1)]
+public class UltimateNatureSpells : Spells
 {
-    public GameObject BasicArcanePrefab;
+    public GameObject UltimateNaturePrefab;
     //public GameObject Player;
     public float range;
     public float angle;
-    
+
 
     public override void CastSpell(Vector2 targetPosition, Vector2 playersPosition)
     {
@@ -18,7 +18,7 @@ public class BasicArcaneSpells : Spells
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         // Instantiate and rotate the cone
-        GameObject BasicIce = Instantiate(BasicArcanePrefab, playersPosition, Quaternion.Euler(0, 0, angle));
+        GameObject UltimateNature = Instantiate(UltimateNaturePrefab, playersPosition, Quaternion.Euler(0, 0, angle));
 
         // Optionally, add logic for duration, effects, etc.
         Debug.Log($"Casting {SpellName} towards {targetPosition}");

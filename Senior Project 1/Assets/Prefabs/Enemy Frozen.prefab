@@ -168,7 +168,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.9843137, g: 0, b: 0.4804323, a: 1}
   m_FlipX: 0
@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyHP: 50
+  EnemyMaxHP: 50
   MoveSpeed: 0
   Player: {fileID: 3806258787461687420, guid: 51037a69ea3ad484eb110580a2932357, type: 3}
   HitBox: {fileID: 5147227726136552327}
@@ -236,6 +237,7 @@ MonoBehaviour:
   EnemyAttackDistance: 2
   playerController: {fileID: 7878445409492185271, guid: 51037a69ea3ad484eb110580a2932357, type: 3}
   EXPPrefab: {fileID: 8906193180990309853, guid: a989b7d5d9592e642b048d61887e13bc, type: 3}
+  healthBar: {fileID: 0}
 --- !u!50 &3113479836509577659
 Rigidbody2D:
   serializedVersion: 4

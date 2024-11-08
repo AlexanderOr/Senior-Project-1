@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8058921908619601237}
   - component: {fileID: -2336885081277756726}
   - component: {fileID: 2346435018525297096}
+  - component: {fileID: -6510871738345275573}
   m_Layer: 8
   m_Name: center
   m_TagString: Spells
@@ -91,6 +92,19 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &-6510871738345275573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609070407655874589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb6576d131795d4ba2ce580cfaf7b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellData: {fileID: 11400000, guid: 17a0c9953bae02140bc08ad84c53ff5f, type: 2}
 --- !u!1001 &1927522293469981916
 PrefabInstance:
   m_ObjectHideFlags: 0

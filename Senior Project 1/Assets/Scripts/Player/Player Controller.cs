@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
 
         if(collision.tag == "EnemyBullet")
         {
-            playerHit();
+            Player_HP -= 5;
             Destroy(collision.gameObject);
         }
 
@@ -249,5 +249,14 @@ public class PlayerController : MonoBehaviour
     {
         Immune = true;
         ImmuneTimer = Duration;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (Invincible == false && isPaused == false && Immune == false)
+        {
+            Player_HP -= damage;
+            IframeCD();
+        }
     }
 }

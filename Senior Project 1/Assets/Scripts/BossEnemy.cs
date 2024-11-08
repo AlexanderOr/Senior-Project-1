@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class RangedEnemyAI : MonoBehaviour
+public class BossEnemy : MonoBehaviour
 {
     public Transform player;             // Reference to the player
     public float stopDistance = 5f;      // Distance to stop from the player
-    public float speed = 2f;             // Movement speed
+    public float speed = 1f;             // Movement speed
     public GameObject projectilePrefab;  // Projectile to shoot at the player
-    public float shootInterval = 2f;     // Time between shots
-    public Transform firePoint;          // Position to shoot from
+    public float shootInterval = 5f;     // Time between shots
+    public Transform[] firePoint;          // Position to shoot from
     public float EnemyHP;
     public float EnemyMaxHP;
     public bool isBleeding;
@@ -20,10 +21,16 @@ public class RangedEnemyAI : MonoBehaviour
     public GameObject PlayerGO;
     private float shootTimer;
 
+    public float coneAngle = 45f;
+    public float coneDistance = 10f;
+    public float AOEInterval = 10f;
+    public int aoeDamage = 20;
+    public int contactDamage = 25;
 
     private void Start()
     {
         healthBar = GetComponentInChildren<EnemyHPBar>();
+        StartCoroutine(ConeAOEAttack());
     }
 
     private void Awake()
@@ -41,12 +48,13 @@ public class RangedEnemyAI : MonoBehaviour
             MoveTowardsPlayer();
             ShootAtPlayer();
         }
-        
+
 
         if (EnemyHP <= 0)
         {
-            Instantiate(EXPPrefab, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
             Destroy(gameObject);
+            //win game
+            SceneManager.LoadScene("GameWon");
         }
 
         if (isBleeding == true)
@@ -74,27 +82,34 @@ public class RangedEnemyAI : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.position);
 
         // Only shoot if within range and time to shoot
-        if (distance <= stopDistance)
+        shootTimer += Time.deltaTime;
+        if (shootTimer >= shootInterval)
         {
-            shootTimer += Time.deltaTime;
-            if (shootTimer >= shootInterval)
-            {
-                shootTimer = 0f;
-                ShootProjectile();
-            }
+            shootTimer = 0f;
+            ShootProjectile();
         }
+
     }
 
     void ShootProjectile()
     {
-        // Instantiate a projectile and set its direction towards the player
-        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        Vector2 direction = (player.position - firePoint.position).normalized;
-        projectile.GetComponent<Rigidbody2D>().velocity = direction * 7f; // Adjust speed as necessary
+        foreach (Transform spawnPoint in firePoint)
+        {
+            // Instantiate a projectile and set its direction towards the player
+            GameObject projectile = Instantiate(projectilePrefab, spawnPoint.position, Quaternion.identity);
+            Vector2 direction = (player.position - spawnPoint.position).normalized;
+            projectile.GetComponent<Rigidbody2D>().velocity = direction * 7f; // Adjust speed as necessary
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(contactDamage);
+        }
+
         if (collision.tag == "Spells")
         {
 
@@ -150,4 +165,24 @@ public class RangedEnemyAI : MonoBehaviour
         yield return null;
         Debug.Log(EnemyHP);
     }
+
+    private IEnumerator ConeAOEAttack()
+    {
+        while (true)
+        {
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, coneDistance);
+            foreach (var hitCollider in hitColliders)
+            {
+                Vector3 directionToTarget = (hitCollider.transform.position - transform.position).normalized;
+                float angle = Vector3.Angle(transform.forward, directionToTarget);
+
+                if (angle < coneAngle / 2 && hitCollider.CompareTag("Player"))
+                {
+                    hitCollider.GetComponent<PlayerController>().TakeDamage(aoeDamage);
+                }
+            }
+            yield return new WaitForSeconds(AOEInterval);
+        }
+    }
 }
+

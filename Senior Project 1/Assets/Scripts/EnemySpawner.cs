@@ -8,9 +8,11 @@ public class EnemySpawner : MonoBehaviour
     public GameObject Enemy;
     public GameObject RunningEnemy;
     public GameObject RangedEnemy;
+    public GameObject BossEnemy;
     public bool stopSpawning = false;
     public float spawnTime;
     public float spawnDelay;
+    public float spawnRadius = 20f;
 
     public PlayerController playerController;
     // Start is called before the first frame update
@@ -23,12 +25,25 @@ public class EnemySpawner : MonoBehaviour
     {
         if(playerController.isPaused == false)
         {
-            Instantiate(Enemy, transform.position, transform.rotation);
+            Vector2 randomDirection = Random.insideUnitCircle.normalized;  // Random direction around the player
+            Vector3 spawnPosition = playerController.transform.position + (Vector3)randomDirection * spawnRadius;
+
+            Instantiate(Enemy, spawnPosition, Quaternion.identity);
         }
 
         if (stopSpawning )
         {
             CancelInvoke("SpawnEnemy");
         }
+    }
+
+    public void SpawnBoss()
+    {
+        //spawn boss
+        Vector2 randomDirection = Random.insideUnitCircle.normalized;
+        Vector3 spawnPosition = playerController.transform.position + (Vector3)randomDirection * spawnRadius;
+
+        Instantiate(BossEnemy, spawnPosition, Quaternion.identity);
+        stopSpawning = true;
     }
 }

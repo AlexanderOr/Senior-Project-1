@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4505451788543040856}
   - component: {fileID: 531888519705725603}
   - component: {fileID: 8035415887068849112}
+  - component: {fileID: 1461427979658876156}
   m_Layer: 8
   m_Name: Upheaval
   m_TagString: Spells
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.5018867, g: 0.38112155, b: 0.24904943, a: 1}
   m_FlipX: 0
@@ -134,3 +135,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Duration: 0.5
+--- !u!114 &1461427979658876156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7125610737025763080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb6576d131795d4ba2ce580cfaf7b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellData: {fileID: 11400000, guid: 96e46d73672668042a864083480dbd95, type: 2}
