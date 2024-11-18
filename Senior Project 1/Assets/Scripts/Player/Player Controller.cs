@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public float RollDist = 10;
     bool Immune = false;
     float ImmuneTimer;
+    private bool isCasting = false;
 
     public bool isPaused;
 
@@ -43,6 +45,16 @@ public class PlayerController : MonoBehaviour
 
     //Spell Menu
     public SpellMenuManager SpellMenuManager;
+    private Dictionary<int, float> spellCooldowns = new Dictionary<int, float>();
+
+    //Spell UI
+    public List<TextMeshProUGUI> spellCooldownTexts = new List<TextMeshProUGUI>(); // 5 cooldown texts
+
+    //SFX
+    public AudioClip[] damageSounds; // Array to hold the three sounds
+    public AudioClip DeathSound;
+    private AudioSource audioSource;
+    public AudioClip[] CastSounds;
 
     private void Awake()
     {
@@ -54,6 +66,8 @@ public class PlayerController : MonoBehaviour
         Player_EXP = 0;
         Player_HP = 100;
         Player_MaxHP = 100;
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     private void Update()
@@ -61,6 +75,7 @@ public class PlayerController : MonoBehaviour
         //spells
         HandleSpellSelection();
         HandleSpellCasting();
+        UpdateSpellCooldownUI();
 
         if (Player_EXP >= Player_MaxEXP)
         {
@@ -106,6 +121,7 @@ public class PlayerController : MonoBehaviour
             if (Player_HP <= 0)
             {
                 SceneManager.LoadScene("GameOver");
+                audioSource.PlayOneShot(DeathSound);
             }
         }
         else if(isPaused == true)
@@ -138,6 +154,8 @@ public class PlayerController : MonoBehaviour
 
             if(ImmuneTimer <= 0) { Immune = false; }
         }
+
+        
 
     }
 
@@ -207,19 +225,75 @@ public class PlayerController : MonoBehaviour
 
     void HandleSpellCasting()
     {
-        if (isPaused == false)
+        if (isPaused == false && !isCasting)
         {
             if (Input.GetMouseButtonDown(0) && SpellHolder.playerSpells.Count > currentSpellIndex)
             {
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 mousePos2 = new Vector2(mousePosition.x, mousePosition.y);
                 Debug.Log(mousePosition.x + " " + mousePosition.y);
-
                 Vector2 playerPosition = transform.position;
-                SpellHolder.playerSpell[currentSpellIndex].CastSpell(mousePos2, playerPosition);
+                Spells currentSpell = SpellHolder.playerSpell[currentSpellIndex];
+
+                if(GetSpellCooldown(currentSpellIndex) <= 0)
+                {
+                    //SpellHolder.playerSpell[currentSpellIndex].CastSpell(mousePos2, playerPosition);
+                    StartCoroutine(CastSpell(currentSpell, mousePos2, playerPosition));
+                }
+                
 
             }
-        } 
+        }
+
+        // Make a copy of the keys to safely iterate while modifying the dictionary
+        List<int> keys = new List<int>(spellCooldowns.Keys);
+
+        // Decrease cooldown timers over time
+        foreach (var spell in keys)
+        {
+            if (spellCooldowns[spell] > 0)
+            {
+                spellCooldowns[spell] -= Time.deltaTime;
+
+                
+                if (spellCooldowns[spell] <= 0)
+                {
+                    spellCooldowns[spell] = 0;
+                }
+            }
+        }
+    }
+
+    IEnumerator CastSpell(Spells spell, Vector2 mousePos2, Vector2 playerPosition)
+    {
+        // Apply speed reduction during casting (25% slower)
+        float originalSpeed = MoveSpeed;
+        MoveSpeed *= 0.75f; // Reducing player speed by 25%
+
+        // Start the casting animation or effect (if any)
+        isCasting = true;
+
+        // Wait for the cast time to finish
+        yield return new WaitForSeconds(spell.CastTime);
+
+        // Once casting is done, cast the spell
+        spell.CastSpell(mousePos2, playerPosition);
+
+        // SFX
+        if (CastSounds.Length > 0)
+        {
+            int randomIndex = Random.Range(0, CastSounds.Length);
+            audioSource.PlayOneShot(CastSounds[randomIndex]);
+        }
+
+        // After casting is complete, restore player speed
+        MoveSpeed = originalSpeed;
+
+        // Set the cooldown for this specific spell
+        SetSpellCooldown(currentSpellIndex, spell.CoolDown);
+
+        // End casting
+        isCasting = false;
     }
 
     void LevelUp()
@@ -240,6 +314,15 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void HealOption(int amount)
+    {
+        if (Player_HP < Player_MaxHP)
+        {
+            Player_HP += amount;
+        }
+
+    }
+
     public void Teleport(Vector2 mousePos2)
     {
         transform.position = mousePos2;
@@ -256,7 +339,59 @@ public class PlayerController : MonoBehaviour
         if (Invincible == false && isPaused == false && Immune == false)
         {
             Player_HP -= damage;
+            PlayRandomDamageSound();
             IframeCD();
         }
     }
+
+    float GetSpellCooldown(int spellIndex)
+    {
+        if (spellCooldowns.ContainsKey(spellIndex))
+        {
+            return spellCooldowns[spellIndex];
+        }
+        return 0; // Default to no cooldown if not found
+    }
+
+    void SetSpellCooldown(int spellIndex, float cooldownTime)
+    {
+        if (spellCooldowns.ContainsKey(spellIndex))
+        {
+            spellCooldowns[spellIndex] = cooldownTime;
+        }
+        else
+        {
+            spellCooldowns.Add(spellIndex, cooldownTime);
+        }
+    }
+
+    void UpdateSpellCooldownUI()
+    {
+        for (int i = 0; i < spellCooldownTexts.Count; i++)
+        {
+            float cooldown = GetSpellCooldown(i);
+
+            if (cooldown > 0)
+            {
+                spellCooldownTexts[i].gameObject.SetActive(true);  // Enable the cooldown text
+                spellCooldownTexts[i].text = Mathf.Ceil(cooldown).ToString();  // Update the cooldown text
+            }
+            else
+            {
+                spellCooldownTexts[i].gameObject.SetActive(false);  // Disable the cooldown text
+            }
+        }
+    }
+
+    private void PlayRandomDamageSound()
+    {
+        // Select a random sound from the array
+        if (damageSounds.Length > 0)
+        {
+            int randomIndex = Random.Range(0, damageSounds.Length);
+            audioSource.PlayOneShot(damageSounds[randomIndex]);
+        }
+    }
+
+
 }

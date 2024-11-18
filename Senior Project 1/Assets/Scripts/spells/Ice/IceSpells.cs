@@ -24,4 +24,9 @@ public class basicIceSpells : Spells
         Debug.Log($"Casting {SpellName} towards {targetPosition}");
 
     }
+
+    public override void SetDescription()
+    {
+        description = $"A basic ice spell that deals {Damage + (5 * Level)} damage and slows enemies.";
+    }
 }

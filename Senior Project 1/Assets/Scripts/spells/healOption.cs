@@ -2,19 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "UtilityNatureSpell", menuName = "Spells/Utility Nature", order = 1)]
-public class UtilityNatureSpells : Spells
+[CreateAssetMenu(fileName = "HealOption", menuName = "Spells/HealOption", order = 1)]
+public class HealOption : Spells
 {
     public GameObject UtilityNaturePrefab;
     public GameObject Player;
     public PlayerController Playercontroller;
     public float range;
     public float angle;
+    public int healAmount = 25;
 
     public void Awake()
     {
         //Player = GameObject.FindGameObjectWithTag("Player");
         //Playercontroller = Player.GetComponent<PlayerController>();
+    }
+
+    public void ApplyHeal(PlayerController playercontroller)
+    {
+        playercontroller.HealOption(healAmount);
     }
 
 
@@ -25,7 +31,7 @@ public class UtilityNatureSpells : Spells
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         // Instantiate and rotate the cone
-        GameObject UtilityNatureSpell = Instantiate(UtilityNaturePrefab, playersPosition, Quaternion.Euler(0, 0, 0));
+        //GameObject UtilityNatureSpell = Instantiate(UtilityNaturePrefab, playersPosition, Quaternion.Euler(0, 0, 0));
 
         // Optionally, add logic for duration, effects, etc.
         Playercontroller.Heal();
@@ -35,6 +41,6 @@ public class UtilityNatureSpells : Spells
 
     public override void SetDescription()
     {
-        description = $"A utility nature spell that heals 25 health.";
+        description = $"A one time heal for 25 health.";
     }
 }

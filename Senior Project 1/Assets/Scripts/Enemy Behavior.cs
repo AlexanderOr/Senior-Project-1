@@ -25,6 +25,11 @@ public class EnemyBehavior : MonoBehaviour
 
     [SerializeField] EnemyHPBar healthBar;
 
+    //SFX
+    public AudioClip[] damageSounds; // Array to hold the three sounds
+    public AudioClip DeathSound;
+    public AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +37,7 @@ public class EnemyBehavior : MonoBehaviour
         Animator = GetComponent<Animator>();
         Player = GameObject.FindGameObjectWithTag("Player");
         healthBar = GetComponentInChildren<EnemyHPBar>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Awake()
@@ -124,7 +130,7 @@ public class EnemyBehavior : MonoBehaviour
 
                 int finalDamage = spellData.Damage + (5 * (spellData.Level - 1));
                 // Apply damage based on the spell's damage property
-                StartCoroutine(Damage(finalDamage));
+                
 
                 // Apply status effects based on the spell's properties
                 if (spellData.isBleeding)
@@ -140,8 +146,21 @@ public class EnemyBehavior : MonoBehaviour
                     MoveSpeed = Mathf.Max(2f, MoveSpeed - spellData.speedReduction);
                 }
 
+                if (damageSounds.Length > 0)
+                {
+                    int randomIndex = Random.Range(0, damageSounds.Length);
+                    audioSource.PlayOneShot(damageSounds[randomIndex]);
+
+                }
+
                 // Destroy the spell object after applying its effects
-                Destroy(collision.gameObject);
+                if (spellData.name != "Landslide" || spellData.name != "Blizzard" || spellData.type != SpellType.Arcane)
+                {
+                    Destroy(collision.gameObject);
+                }
+                
+                StartCoroutine(Damage(finalDamage));
+
 
             }
 

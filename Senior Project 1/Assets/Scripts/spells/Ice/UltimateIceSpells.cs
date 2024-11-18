@@ -36,4 +36,9 @@ public class UltimateIceSpells : Spells
         Debug.Log($"Casting {SpellName} towards {targetPosition}");
 
     }
+
+    public override void SetDescription()
+    {
+        description = $"A Ultimate ice spell that deals {Damage + (5 * Level)} damage around the player and slows enemies.";
+    }
 }

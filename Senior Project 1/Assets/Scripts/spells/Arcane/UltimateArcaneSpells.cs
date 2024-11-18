@@ -24,4 +24,9 @@ public class UltimateArcaneSpells : Spells
         Debug.Log($"Casting {SpellName} towards {targetPosition}");
 
     }
+
+    public override void SetDescription()
+    {
+        description = $"A ultimate arcane spell that deals {Damage + (5 * Level)} damage around the player.";
+    }
 }

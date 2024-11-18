@@ -8,7 +8,7 @@ public class BasicRockSpells : Spells
     public GameObject BasicRockPrefab;
     //public GameObject Player;
     public float range;
-    public float angle;
+    public float angle; 
 
 
     public override void CastSpell(Vector2 targetPosition, Vector2 playersPosition)
@@ -23,5 +23,10 @@ public class BasicRockSpells : Spells
         // Optionally, add logic for duration, effects, etc.
         Debug.Log($"Casting {SpellName} towards {targetPosition}");
 
+    }
+
+    public override void SetDescription()
+    {
+        description = $"A basic rock spell that deals {Damage + (5 * Level)} damage and slightly pushes enemies back.";
     }
 }

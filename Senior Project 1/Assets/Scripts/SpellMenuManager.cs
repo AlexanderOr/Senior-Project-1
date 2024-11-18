@@ -70,10 +70,19 @@ public class SpellMenuManager : MonoBehaviour
 
     private void OnConfirmChoice(int choiceIndex)
     {
-        // Notify SpellHolder of the chosen spell
         if (choiceIndex < currentSpellChoices.Count)
         {
-            spellHolder.AddOrUpgradeSpell(currentSpellChoices[choiceIndex]);
+            var chosenOption = currentSpellChoices[choiceIndex];
+
+            // Check if the chosen option is a HealOption
+            if (chosenOption is HealOption healOption)
+            {
+                healOption.ApplyHeal(spellHolder.playerController); // Apply healing
+            }
+            else
+            {
+                spellHolder.AddOrUpgradeSpell(chosenOption); // Add or upgrade spell
+            }
         }
 
         // Hide the menu after selection

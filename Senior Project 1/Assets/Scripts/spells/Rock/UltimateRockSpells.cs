@@ -24,4 +24,9 @@ public class UltimateRockSpells : Spells
         Debug.Log($"Casting {SpellName} towards {targetPosition}");
 
     }
+
+    public override void SetDescription()
+    {
+        description = $"A Ultimate rock spell that deals {Damage + (5 * Level)} damage and stuns enemies.";
+    }
 }

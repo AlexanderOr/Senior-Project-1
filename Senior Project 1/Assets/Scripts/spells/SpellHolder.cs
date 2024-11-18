@@ -67,23 +67,55 @@ public class SpellHolder : MonoBehaviour
     {
         PlayerController.Player_Level++;
 
-        // Determine spell category based on level
-        List<Spells> possibleSpells = GetAvailableSpellOptions();
-
         // Offer three random choices from the available spells
         List<Spells> choices = new List<Spells>();
-        for (int i = 0; i < 3 && i < possibleSpells.Count; i++)
+        if (playerSpell.Count >= 5)
         {
-            Spells randomSpell;
-
-            // Keep generating a random spell until we find one that isn’t already in choices
-            do
+            // Generate upgrade options or heal option
+            for (int i = 0; i < 3; i++)
             {
-                randomSpell = possibleSpells[Random.Range(0, possibleSpells.Count)];
-            } while (choices.Contains(randomSpell));
+                if (Random.Range(0, 4) < 3) // 75% chance to offer a spell upgrade
+                {
+                    Spells randomOwnedSpell = playerSpell[Random.Range(0, playerSpell.Count)];
+                    if (!choices.Contains(randomOwnedSpell))
+                    {
+                        choices.Add(randomOwnedSpell);
+                    }
+                    else
+                    {
+                        i--; // Retry if duplicate
+                    }
+                }
+                else // 25% chance to offer a heal option
+                {
+                    // Assuming you have a placeholder or method for heal option
+                    Spells healOption = Resources.Load<Spells>("Spells/HealOption");
+                    if (!choices.Contains(healOption))
+                    {
+                        choices.Add(healOption);
+                    }
+                    else
+                    {
+                        i--; // Retry if duplicate
+                    }
+                }
+            }
+        }
+        else
+        {
+            // If player has fewer than 5 spells, generate new spell options
+            List<Spells> possibleSpells = GetAvailableSpellOptions();
+            for (int i = 0; i < 3 && i < possibleSpells.Count; i++)
+            {
+                Spells randomSpell;
+                do
+                {
+                    randomSpell = possibleSpells[Random.Range(0, possibleSpells.Count)];
+                } while (choices.Contains(randomSpell));
 
-            choices.Add(randomSpell);
-            Debug.Log(randomSpell);
+                choices.Add(randomSpell);
+                randomSpell.SetDescription();
+            }
         }
 
         // Display choices to player (pseudo-code for UI interaction)

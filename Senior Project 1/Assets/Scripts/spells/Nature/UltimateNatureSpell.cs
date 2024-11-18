@@ -24,4 +24,9 @@ public class UltimateNatureSpells : Spells
         Debug.Log($"Casting {SpellName} towards {targetPosition}");
 
     }
+
+    public override void SetDescription()
+    {
+        description = $"A Ultimate nature spell that deals {Damage + (5 * Level)} damage and roots enemies.";
+    }
 }

@@ -24,4 +24,9 @@ public class BasicArcaneSpells : Spells
         Debug.Log($"Casting {SpellName} towards {targetPosition}");
 
     }
+
+    public override void SetDescription()
+    {
+        description = $"A basic Arcane spell that deals {Damage + (5 * Level)} damage and pierces enemies.";
+    }
 }

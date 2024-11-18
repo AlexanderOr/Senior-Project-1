@@ -39,4 +39,9 @@ public class UtilityRockSpells : Spells
         Debug.Log($"Casting {SpellName} towards {targetPosition}");
 
     }
+
+    public override void SetDescription()
+    {
+        description = $"A Utility rock spell that protects the player from damage for {Duration} seconds.";
+    }
 }

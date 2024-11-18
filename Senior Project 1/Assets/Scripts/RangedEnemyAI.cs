@@ -20,6 +20,8 @@ public class RangedEnemyAI : MonoBehaviour
     public GameObject PlayerGO;
     private float shootTimer;
 
+    public EnemyBehavior enemyBehavior;
+
 
     private void Start()
     {
@@ -122,6 +124,12 @@ public class RangedEnemyAI : MonoBehaviour
                 }
 
                 // Destroy the spell object after applying its effects
+                if (enemyBehavior.damageSounds.Length > 0)
+                {
+                    int randomIndex = Random.Range(0, enemyBehavior.damageSounds.Length);
+                    enemyBehavior.audioSource.PlayOneShot(enemyBehavior.damageSounds[randomIndex]);
+
+                }
                 Destroy(collision.gameObject);
 
             }

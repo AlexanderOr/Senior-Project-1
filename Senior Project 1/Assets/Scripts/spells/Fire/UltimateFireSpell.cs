@@ -24,4 +24,9 @@ public class UltimateFireSpells : Spells
         Debug.Log($"Casting {SpellName} towards {targetPosition}");
 
     }
+
+    public override void SetDescription()
+    {
+        description = $"A Ultimate fire spell that deals {Damage + (5 * Level)} damage.";
+    }
 }

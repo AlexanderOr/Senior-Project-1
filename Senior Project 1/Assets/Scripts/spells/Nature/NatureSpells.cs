@@ -24,6 +24,11 @@ public class BasicNatureSpells : Spells
         Debug.Log($"Casting {SpellName} towards {targetPosition}");
 
     }
+
+    public override void SetDescription()
+    {
+        description = $"A basic nature spell that deals {Damage + (5 * Level)} damage and bleeds enemies.";
+    }
 }
 
 

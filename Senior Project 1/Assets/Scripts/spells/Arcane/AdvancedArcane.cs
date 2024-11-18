@@ -24,4 +24,9 @@ public class AdvancedArcaneSpells : Spells
         Debug.Log($"Casting {SpellName} towards {targetPosition}");
 
     }
+
+    public override void SetDescription()
+    {
+        description = $"A Advanced arcane spell that deals {Damage + (5 * Level)} damage in a line.";
+    }
 }

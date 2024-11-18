@@ -24,6 +24,11 @@ public class FireConeSpell : Spells
         Debug.Log($"Casting {SpellName} towards {targetPosition}");
 
     }
+
+    public override void SetDescription()
+    {
+        description = $"A basic fire spell that deals {Damage + (5 * Level)} damage.";
+    }
 }
 
 

@@ -35,4 +35,9 @@ public class UtilityArcaneSpells : Spells
         Debug.Log($"Casting {SpellName} towards {targetPosition}");
 
     }
+
+    public override void SetDescription()
+    {
+        description = $"A Utility arcane spell that teleports the player to the cursor.";
+    }
 }

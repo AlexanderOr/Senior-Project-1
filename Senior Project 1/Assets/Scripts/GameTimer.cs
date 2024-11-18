@@ -6,7 +6,7 @@ using TMPro;
 public class GameTimer : MonoBehaviour
 {
     public float Timer = 0;
-    public float endTime = 600; // 10 mins (60 seconds x 10)
+    public float endTime; // 10 mins (60 seconds x 10)
     public TMP_Text timerText;
     public PlayerController playerController;
 

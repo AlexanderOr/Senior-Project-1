@@ -10,8 +10,8 @@ public abstract class Spells : ScriptableObject
     public string description;
     public int Level;
     public SpellType type;
-    public int CastTime;
-    public int CoolDown;
+    public float CastTime;
+    public float CoolDown;
     public Sprite Icon;
     public int Damage;
     public bool isBleeding;
@@ -19,6 +19,8 @@ public abstract class Spells : ScriptableObject
     public float speedReduction = 0f;
 
     public abstract void CastSpell(Vector2 targetPosition, Vector2 playerPosition);
+
+    public abstract void SetDescription();
 
 }
 
