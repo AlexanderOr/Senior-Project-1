@@ -24,6 +24,7 @@ MonoBehaviour:
   isBleeding: 0
   isStunned: 0
   speedReduction: 3
+  SpellSound: {fileID: 8300000, guid: f6f0e460446168549843f96620a11ec4, type: 3}
   UltimateIcePrefab: {fileID: 832579102538236071, guid: 1a3a5e9ee0e7a0940aa95d96035363a4, type: 3}
   Player: {fileID: 0}
   Playercontroller: {fileID: 0}

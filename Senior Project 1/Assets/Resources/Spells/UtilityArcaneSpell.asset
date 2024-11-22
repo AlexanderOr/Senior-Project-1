@@ -19,6 +19,11 @@ MonoBehaviour:
   CastTime: 1
   CoolDown: 20
   Icon: {fileID: 0}
+  Damage: 0
+  isBleeding: 0
+  isStunned: 0
+  speedReduction: 0
+  SpellSound: {fileID: 8300000, guid: f6f0e460446168549843f96620a11ec4, type: 3}
   UtilityArcanePrefab: {fileID: 0}
   Player: {fileID: 3806258787461687420, guid: 51037a69ea3ad484eb110580a2932357, type: 3}
   Playercontroller: {fileID: 7878445409492185271, guid: 51037a69ea3ad484eb110580a2932357, type: 3}

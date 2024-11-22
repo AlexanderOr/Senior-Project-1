@@ -27,6 +27,6 @@ public class UltimateNatureSpells : Spells
 
     public override void SetDescription()
     {
-        description = $"A Ultimate nature spell that deals {Damage + (5 * Level)} damage and roots enemies.";
+        description = $"A Ultimate nature spell that deals {Damage + (5 * (Level - 1))} + ({(5 * (Level))}) damage and roots enemies.";
     }
 }

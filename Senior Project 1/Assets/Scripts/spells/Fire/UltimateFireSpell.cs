@@ -27,6 +27,6 @@ public class UltimateFireSpells : Spells
 
     public override void SetDescription()
     {
-        description = $"A Ultimate fire spell that deals {Damage + (5 * Level)} damage.";
+        description = $"A Ultimate fire spell that deals {Damage + (5 * (Level - 1))}  + ( {(5 * (Level))} ) damage.";
     }
 }

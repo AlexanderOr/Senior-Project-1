@@ -706,7 +706,7 @@ MonoBehaviour:
   EnemyMaxHP: 200
   isBleeding: 0
   EXPPrefab: {fileID: 8906193180990309853, guid: a989b7d5d9592e642b048d61887e13bc, type: 3}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 3129988073611018443}
   playerController: {fileID: 0}
   PlayerGO: {fileID: 0}
   coneAngle: 45
@@ -715,6 +715,12 @@ MonoBehaviour:
   aoeDamage: 20
   contactDamage: 25
   enemyBehavior: {fileID: 5092682814641774309, guid: 0068ad408e39ed34e8c022082981645e, type: 3}
+  damageSounds:
+  - {fileID: 8300000, guid: 28313855da7cf1e48b79bf3528641f6c, type: 3}
+  - {fileID: 8300000, guid: 98a29fdc0b2cd894cadb35d4f2013185, type: 3}
+  - {fileID: 8300000, guid: dfb7c12bdee555145ba09ab4818eaa06, type: 3}
+  DeathSound: {fileID: 0}
+  audioSource: {fileID: -2502474820644075647}
 --- !u!82 &-2502474820644075647
 AudioSource:
   m_ObjectHideFlags: 0

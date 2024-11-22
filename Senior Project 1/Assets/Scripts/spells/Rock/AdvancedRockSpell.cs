@@ -27,6 +27,6 @@ public class AdvancedRockSpells : Spells
 
     public override void SetDescription()
     {
-        description = $"A Advanced rock spell that deals {Damage + (5 * Level)} damage and pushes enemies back.";
+        description = $"A Advanced rock spell that deals {Damage + (5 * (Level - 1))} + ({(5 * (Level))}) damage and pushes enemies back.";
     }
 }

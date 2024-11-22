@@ -27,6 +27,6 @@ public class UltimateArcaneSpells : Spells
 
     public override void SetDescription()
     {
-        description = $"A ultimate arcane spell that deals {Damage + (5 * Level)} damage around the player.";
+        description = $"A ultimate arcane spell that deals {Damage + (5 * (Level - 1))} + ({(5 * (Level))}) damage around the player.";
     }
 }

@@ -27,6 +27,6 @@ public class basicIceSpells : Spells
 
     public override void SetDescription()
     {
-        description = $"A basic ice spell that deals {Damage + (5 * Level)} damage and slows enemies.";
+        description = $"A basic ice spell that deals {Damage + (5 * (Level - 1))} + ({(5 * (Level))}) damage and slows enemies.";
     }
 }

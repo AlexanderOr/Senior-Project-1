@@ -280,11 +280,14 @@ public class PlayerController : MonoBehaviour
         spell.CastSpell(mousePos2, playerPosition);
 
         // SFX
-        if (CastSounds.Length > 0)
+        audioSource.PlayOneShot(spell.SpellSound);
+
+        /*if (CastSounds.Length > 0)
         {
-            int randomIndex = Random.Range(0, CastSounds.Length);
-            audioSource.PlayOneShot(CastSounds[randomIndex]);
-        }
+           //int randomIndex = Random.Range(0, CastSounds.Length);
+            
+        }*/
+
 
         // After casting is complete, restore player speed
         MoveSpeed = originalSpeed;

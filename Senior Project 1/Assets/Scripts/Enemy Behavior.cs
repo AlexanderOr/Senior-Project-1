@@ -60,8 +60,6 @@ public class EnemyBehavior : MonoBehaviour
             HasTarget = HitBox.Colliders.Count > 0;
 
             UpdateDirection();
-            RotateToPlayer();
-            Move();
         }
 
         HasTarget = false;
@@ -78,6 +76,8 @@ public class EnemyBehavior : MonoBehaviour
         EnemyToPlayer = Player.transform.position - transform.position;
 
         DirectionOfPlayer = EnemyToPlayer.normalized;
+        RotateToPlayer();
+        
     }
 
     private void RotateToPlayer()
@@ -86,6 +86,7 @@ public class EnemyBehavior : MonoBehaviour
         Quaternion rotation = Quaternion.RotateTowards(transform.rotation, TargetRotation, LookSpeed);
     
         RB.SetRotation(rotation);
+        Move();
     }
 
     private void Move()
@@ -179,14 +180,24 @@ public class EnemyBehavior : MonoBehaviour
 
     IEnumerator Bleeding()
     {
-        EnemyHP -= 5;
+        int bleedTime = 2;
+        int bleedTicks = 0;
+        int bleedDamage = 5;
+
         yield return new WaitForSeconds(1f);
-        Debug.Log(EnemyHP);
-        EnemyHP -= 5;
-        Debug.Log(EnemyHP);
-        isBleeding = false;
-        yield return null;
-        Debug.Log(EnemyHP);
+        while(isBleeding == true)
+        {
+            if (bleedTicks < bleedTime)
+            {
+                StartCoroutine(Damage(bleedDamage));
+                //yield return new WaitForSeconds(1f);
+                bleedTicks++;
+            }
+            else
+            {
+                isBleeding = false;
+            }
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)

@@ -24,6 +24,7 @@ MonoBehaviour:
   isBleeding: 1
   isStunned: 0
   speedReduction: 0
+  SpellSound: {fileID: 8300000, guid: 1cd667640143f644b85c61e693c559c7, type: 3}
   AdvancedNaturePrefab: {fileID: 2407930709059113448, guid: a465ec36bdd5e764daad4c64938c2224, type: 3}
   range: 0
   angle: 0

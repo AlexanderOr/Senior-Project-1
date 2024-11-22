@@ -23,6 +23,7 @@ MonoBehaviour:
   isBleeding: 0
   isStunned: 0
   speedReduction: 0
+  SpellSound: {fileID: 8300000, guid: f7b7bc482ae27824383e58637d503afe, type: 3}
   FireConePrefab: {fileID: 609070407655874589, guid: 6c653d64531f915498c83a4b8b8a7c6c, type: 3}
   range: 10
   angle: 45

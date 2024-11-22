@@ -27,6 +27,6 @@ public class AdvancedArcaneSpells : Spells
 
     public override void SetDescription()
     {
-        description = $"A Advanced arcane spell that deals {Damage + (5 * Level)} damage in a line.";
+        description = $"A Advanced arcane spell that deals {Damage + (5 * (Level - 1))} + ({(5 * (Level))}) damage in a line.";
     }
 }

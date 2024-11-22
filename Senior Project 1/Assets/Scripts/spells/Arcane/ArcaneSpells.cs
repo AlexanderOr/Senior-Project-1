@@ -27,6 +27,6 @@ public class BasicArcaneSpells : Spells
 
     public override void SetDescription()
     {
-        description = $"A basic Arcane spell that deals {Damage + (5 * Level)} damage and pierces enemies.";
+        description = $"A basic Arcane spell that deals {Damage + (5 * (Level - 1))} + ({(5 * (Level))}) damage and pierces enemies.";
     }
 }

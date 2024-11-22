@@ -27,7 +27,7 @@ public class BasicNatureSpells : Spells
 
     public override void SetDescription()
     {
-        description = $"A basic nature spell that deals {Damage + (5 * Level)} damage and bleeds enemies.";
+        description = $"A basic nature spell that deals {Damage + (5 * (Level - 1))} + ({(5 * (Level))}) damage and bleeds enemies.";
     }
 }
 

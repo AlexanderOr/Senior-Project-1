@@ -3312,6 +3312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Timer: 0
   endTime: 180
+  bossSpawned: 0
   timerText: {fileID: 964991366}
   playerController: {fileID: 2179456359503594561}
   enemySpawner: {fileID: 232820158}

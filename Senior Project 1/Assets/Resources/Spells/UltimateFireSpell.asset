@@ -23,6 +23,7 @@ MonoBehaviour:
   isBleeding: 0
   isStunned: 0
   speedReduction: 0
+  SpellSound: {fileID: 8300000, guid: f6f0e460446168549843f96620a11ec4, type: 3}
   UltimateFirePrefab: {fileID: 5265232925150470296, guid: a1fdd4aebb7f6e34a922d7e2d081c8a6, type: 3}
   range: 0
   angle: 0

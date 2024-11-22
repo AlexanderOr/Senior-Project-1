@@ -27,6 +27,6 @@ public class AdvancedNatureSpells : Spells
 
     public override void SetDescription()
     {
-        description = $"A Advanced Nature spell that deals {Damage + (5 * Level)} damage and bleeds enemies.";
+        description = $"A Advanced Nature spell that deals {Damage + (5 * (Level - 1))} + ({(5 * (Level))}) damage and bleeds enemies.";
     }
 }

@@ -27,6 +27,6 @@ public class AdvancedFireSpell : Spells
 
     public override void SetDescription()
     {
-        description = $"A advanced fire spell that deals {Damage + (5 * Level)} damage.";
+        description = $"A advanced fire spell that deals {Damage + (5 * (Level - 1))} + ({(5 * (Level))}) damage.";
     }
 }

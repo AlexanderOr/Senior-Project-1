@@ -27,6 +27,6 @@ public class AdvancedIceSpells : Spells
 
     public override void SetDescription()
     {
-        description = $"A Advanced Ice spell that deals {Damage + (5 * Level)} damage and slows enemies.";
+        description = $"A Advanced Ice spell that deals {Damage + (5 * (Level - 1))} + ({(5 * (Level))}) damage and slows enemies.";
     }
 }

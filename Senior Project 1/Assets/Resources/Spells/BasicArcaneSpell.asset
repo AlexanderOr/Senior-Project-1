@@ -23,6 +23,7 @@ MonoBehaviour:
   isBleeding: 0
   isStunned: 0
   speedReduction: 0
-  BasicArcanePrefab: {fileID: 5747083885233623173, guid: ea2d6ef7f4babbb4d891eebfd2408f88, type: 3}
+  SpellSound: {fileID: 8300000, guid: f7b7bc482ae27824383e58637d503afe, type: 3}
+  BasicArcanePrefab: {fileID: 708637690087869856, guid: 65d5fd919ce13ee42a1fcd8ee37a2391, type: 3}
   range: 10
   angle: 0

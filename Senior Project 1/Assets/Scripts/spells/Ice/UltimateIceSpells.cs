@@ -39,6 +39,6 @@ public class UltimateIceSpells : Spells
 
     public override void SetDescription()
     {
-        description = $"A Ultimate ice spell that deals {Damage + (5 * Level)} damage around the player and slows enemies.";
+        description = $"A Ultimate ice spell that deals {Damage + (5 * (Level - 1))} + ({(5 * (Level))}) damage around the player and slows enemies.";
     }
 }

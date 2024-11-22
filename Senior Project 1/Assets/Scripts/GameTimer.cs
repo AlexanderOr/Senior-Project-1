@@ -7,6 +7,7 @@ public class GameTimer : MonoBehaviour
 {
     public float Timer = 0;
     public float endTime; // 10 mins (60 seconds x 10)
+    public bool bossSpawned = false;
     public TMP_Text timerText;
     public PlayerController playerController;
 
@@ -29,12 +30,13 @@ public class GameTimer : MonoBehaviour
 
         }
 
-        if (Timer >= endTime) 
+        if (Timer >= endTime && bossSpawned == false) 
         {
             //spawn boss
             enemySpawner.SpawnBoss();
+            enemySpawner.stopSpawning = true;
             timerText.gameObject.SetActive(false);
-
+            bossSpawned=true;
         }
     }
 

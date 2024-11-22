@@ -336,6 +336,12 @@ MonoBehaviour:
   playerController: {fileID: 0}
   PlayerGO: {fileID: 0}
   enemyBehavior: {fileID: 5092682814641774309, guid: 0068ad408e39ed34e8c022082981645e, type: 3}
+  damageSounds:
+  - {fileID: 8300000, guid: 28313855da7cf1e48b79bf3528641f6c, type: 3}
+  - {fileID: 8300000, guid: 98a29fdc0b2cd894cadb35d4f2013185, type: 3}
+  - {fileID: 8300000, guid: dfb7c12bdee555145ba09ab4818eaa06, type: 3}
+  DeathSound: {fileID: 0}
+  audioSource: {fileID: 1711022708623806385}
 --- !u!82 &1711022708623806385
 AudioSource:
   m_ObjectHideFlags: 0

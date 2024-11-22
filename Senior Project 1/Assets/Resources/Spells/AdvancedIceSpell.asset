@@ -24,6 +24,7 @@ MonoBehaviour:
   isBleeding: 0
   isStunned: 0
   speedReduction: 2
+  SpellSound: {fileID: 8300000, guid: 1cd667640143f644b85c61e693c559c7, type: 3}
   AdvancedIcePrefab: {fileID: 5644333496711824263, guid: 68c9eef53ae11774885eb54bb58622dd, type: 3}
   range: 0
   angle: 0

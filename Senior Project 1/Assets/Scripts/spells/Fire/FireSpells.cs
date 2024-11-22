@@ -27,7 +27,7 @@ public class FireConeSpell : Spells
 
     public override void SetDescription()
     {
-        description = $"A basic fire spell that deals {Damage + (5 * Level)} damage.";
+        description = $"A basic fire spell that deals {Damage + (5 * (Level - 1))} + ({(5 * (Level))}) damage.";
     }
 }
 

@@ -29,6 +29,11 @@ public class BossEnemy : MonoBehaviour
 
     public EnemyBehavior enemyBehavior;
 
+    //SFX
+    public AudioClip[] damageSounds; // Array to hold the three sounds
+    public AudioClip DeathSound;
+    public AudioSource audioSource;
+
     private void Start()
     {
         healthBar = GetComponentInChildren<EnemyHPBar>();
@@ -40,6 +45,8 @@ public class BossEnemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         PlayerGO = GameObject.FindGameObjectWithTag("Player");
         playerController = PlayerGO.GetComponent<PlayerController>();
+        audioSource = GetComponent<AudioSource>();
+
     }
 
 
@@ -139,18 +146,24 @@ public class BossEnemy : MonoBehaviour
                 }
 
                 // Destroy the spell object after applying its effects
-                if (enemyBehavior.damageSounds.Length > 0)
+                if (damageSounds.Length > 0)
                 {
-                    int randomIndex = Random.Range(0, enemyBehavior.damageSounds.Length);
-                    enemyBehavior.audioSource.PlayOneShot(enemyBehavior.damageSounds[randomIndex]);
+                    int randomIndex = Random.Range(0, damageSounds.Length);
+                    audioSource.PlayOneShot(damageSounds[randomIndex]);
 
                 }
-                Destroy(collision.gameObject);
+
+                // Destroy the spell object after applying its effects
+                if (spellData.name != "Landslide" || spellData.name != "Blizzard" || spellData.type != SpellType.Arcane)
+                {
+                    Destroy(collision.gameObject);
+                }
 
             }
 
 
         }
+
 
     }
 
@@ -164,14 +177,24 @@ public class BossEnemy : MonoBehaviour
 
     IEnumerator Bleeding()
     {
-        EnemyHP -= 5;
+        int bleedTime = 2;
+        int bleedTicks = 0;
+        int bleedDamage = 5;
+
         yield return new WaitForSeconds(1f);
-        Debug.Log(EnemyHP);
-        EnemyHP -= 5;
-        Debug.Log(EnemyHP);
-        isBleeding = false;
-        yield return null;
-        Debug.Log(EnemyHP);
+        while (isBleeding == true)
+        {
+            if (bleedTicks < bleedTime)
+            {
+                StartCoroutine(Damage(bleedDamage));
+                //yield return new WaitForSeconds(1f);
+                bleedTicks++;
+            }
+            else
+            {
+                isBleeding = false;
+            }
+        }
     }
 
     private IEnumerator ConeAOEAttack()

@@ -24,6 +24,7 @@ MonoBehaviour:
   isBleeding: 0
   isStunned: 1
   speedReduction: 0
+  SpellSound: {fileID: 8300000, guid: f6f0e460446168549843f96620a11ec4, type: 3}
   UltimateRockPrefab: {fileID: 8901667152801321130, guid: a7dfe647bd2f6884a9448388dc996ca3, type: 3}
   range: 0
   angle: 0
