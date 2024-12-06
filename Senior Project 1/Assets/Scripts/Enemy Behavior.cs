@@ -22,6 +22,8 @@ public class EnemyBehavior : MonoBehaviour
 
     public PlayerController playerController;
     public GameObject EXPPrefab;
+    public GameObject VortexGO;
+    public GameObject ChestGO;
 
     [SerializeField] EnemyHPBar healthBar;
 
@@ -29,6 +31,12 @@ public class EnemyBehavior : MonoBehaviour
     public AudioClip[] damageSounds; // Array to hold the three sounds
     public AudioClip DeathSound;
     public AudioSource audioSource;
+
+    //int for drops
+    public int ChestDropChance = 20;
+    public int VortexDropChance = 25;
+    public int RandomChestChance;
+    public int RandomVortexChance;
 
     // Start is called before the first frame update
     void Start()
@@ -112,6 +120,19 @@ public class EnemyBehavior : MonoBehaviour
         {
             Animator.SetBool("HasHP", false);
             Instantiate(EXPPrefab, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
+            RandomChestChance = Random.Range(1, 100);
+            RandomVortexChance = Random.Range(1, 100);
+            
+            if (ChestDropChance >= RandomChestChance)
+            {
+                Instantiate(ChestGO, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
+            }
+
+            if (VortexDropChance >= RandomVortexChance)
+            {
+                Instantiate(VortexGO, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
+            }
+
             Destroy(gameObject);
         }
         

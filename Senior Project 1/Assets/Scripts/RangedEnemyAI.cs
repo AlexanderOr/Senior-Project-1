@@ -13,7 +13,10 @@ public class RangedEnemyAI : MonoBehaviour
     public float EnemyHP;
     public float EnemyMaxHP;
     public bool isBleeding;
+
     public GameObject EXPPrefab;
+    public GameObject VortexGO;
+    public GameObject ChestGO;
 
     [SerializeField] EnemyHPBar healthBar;
     [SerializeField] PlayerController playerController;
@@ -26,6 +29,12 @@ public class RangedEnemyAI : MonoBehaviour
     public AudioClip[] damageSounds; // Array to hold the three sounds
     public AudioClip DeathSound;
     public AudioSource audioSource;
+
+    //int for drops
+    public int ChestDropChance = 1;
+    public int VortexDropChance = 5;
+    public int RandomChestChance;
+    public int RandomVortexChance;
 
     private void Start()
     {
@@ -53,6 +62,19 @@ public class RangedEnemyAI : MonoBehaviour
         if (EnemyHP <= 0)
         {
             Instantiate(EXPPrefab, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
+            RandomChestChance = Random.Range(1, 100);
+            RandomVortexChance = Random.Range(1, 100);
+
+            if (ChestDropChance < RandomChestChance)
+            {
+                Instantiate(ChestGO, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
+            }
+
+            if (VortexDropChance < RandomVortexChance)
+            {
+                Instantiate(VortexGO, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
+            }
+
             Destroy(gameObject);
         }
 

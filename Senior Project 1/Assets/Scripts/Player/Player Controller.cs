@@ -227,7 +227,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isPaused == false && !isCasting)
         {
-            if (Input.GetMouseButtonDown(0) && SpellHolder.playerSpells.Count > currentSpellIndex)
+            if (Input.GetMouseButton(0) && SpellHolder.playerSpells.Count > currentSpellIndex)
             {
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 mousePos2 = new Vector2(mousePosition.x, mousePosition.y);

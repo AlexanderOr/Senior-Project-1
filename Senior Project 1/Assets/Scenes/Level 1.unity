@@ -1151,11 +1151,14 @@ MonoBehaviour:
   RunningEnemy: {fileID: 6259436750218440264, guid: 7ec3e4a7c9816804d9ad78acb89b9052, type: 3}
   RangedEnemy: {fileID: 4358644515678956721, guid: 8492d10af8b22fe49a0d9320173633ef, type: 3}
   BossEnemy: {fileID: 6025331606090464843, guid: 2b45fdc97a27a294999cd1ea99293a5d, type: 3}
+  RandomEnemyObject: {fileID: 6259436750218440264, guid: 0068ad408e39ed34e8c022082981645e, type: 3}
   stopSpawning: 0
   spawnTime: 1
   spawnDelay: 3
   spawnRadius: 10
+  randomEnemy: 0
   playerController: {fileID: 2179456359503594561}
+  gameTimer: {fileID: 751327622}
 --- !u!4 &232820159
 Transform:
   m_ObjectHideFlags: 0
