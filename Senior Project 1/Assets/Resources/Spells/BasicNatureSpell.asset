@@ -17,13 +17,14 @@ MonoBehaviour:
   Level: 1
   type: 3
   CastTime: 0
-  CoolDown: 0.5
+  CoolDown: 0.75
   Icon: {fileID: 21300000, guid: 3c126505d0f409f40a9690bc3a9a452c, type: 3}
   Damage: 10
   isBleeding: 1
   isStunned: 0
   speedReduction: 0
   SpellSound: {fileID: 8300000, guid: f7b7bc482ae27824383e58637d503afe, type: 3}
+  SpellColor: {r: 0, g: 0, b: 0, a: 0}
   BasicNaturePrefab: {fileID: 2406877534379143180, guid: 625b4f5c1e6ab024990e09833d641686, type: 3}
   range: 10
   angle: 0

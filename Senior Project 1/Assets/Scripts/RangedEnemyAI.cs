@@ -69,8 +69,7 @@ public class RangedEnemyAI : MonoBehaviour
             {
                 Instantiate(ChestGO, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
             }
-
-            if (VortexDropChance < RandomVortexChance)
+            else if (VortexDropChance < RandomVortexChance)
             {
                 Instantiate(VortexGO, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
             }
@@ -159,7 +158,7 @@ public class RangedEnemyAI : MonoBehaviour
                 }
 
                 // Destroy the spell object after applying its effects
-                if (spellData.name != "Landslide" || spellData.name != "Blizzard" || spellData.type != SpellType.Arcane)
+                if (spellData.SpellName != "Landslide" || spellData.SpellName != "Blizzard" || spellData.type != SpellType.Arcane || spellData.SpellName != "Arcane Missle" || spellData.SpellName != "Disintegrate")
                 {
                     Destroy(collision.gameObject);
                 }

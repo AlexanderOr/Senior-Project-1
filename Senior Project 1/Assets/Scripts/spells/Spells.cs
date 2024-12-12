@@ -18,6 +18,7 @@ public abstract class Spells : ScriptableObject
     public bool isStunned;
     public float speedReduction = 0f;
     public AudioClip SpellSound;
+    public Color SpellColor;
 
     public abstract void CastSpell(Vector2 targetPosition, Vector2 playerPosition);
 

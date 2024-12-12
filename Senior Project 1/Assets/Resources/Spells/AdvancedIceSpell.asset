@@ -20,11 +20,12 @@ MonoBehaviour:
   CastTime: 2
   CoolDown: 5
   Icon: {fileID: 21300000, guid: abbbf361132b259499974f56285d6572, type: 3}
-  Damage: 17
+  Damage: 20
   isBleeding: 0
   isStunned: 0
   speedReduction: 2
   SpellSound: {fileID: 8300000, guid: 1cd667640143f644b85c61e693c559c7, type: 3}
+  SpellColor: {r: 0, g: 0.77104276, b: 0.82641506, a: 0}
   AdvancedIcePrefab: {fileID: 5644333496711824263, guid: 68c9eef53ae11774885eb54bb58622dd, type: 3}
   range: 0
   angle: 0

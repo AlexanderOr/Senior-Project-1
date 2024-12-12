@@ -24,6 +24,7 @@ MonoBehaviour:
   isStunned: 0
   speedReduction: 0
   SpellSound: {fileID: 8300000, guid: f6f0e460446168549843f96620a11ec4, type: 3}
+  SpellColor: {r: 0.44834477, g: 0, b: 0.7132075, a: 0}
   UltimateArcanePrefab: {fileID: 5627493190496976726, guid: 94da967279891404e94792e73e19ae0a, type: 3}
   range: 0
   angle: 0

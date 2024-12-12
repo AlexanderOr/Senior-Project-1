@@ -24,6 +24,7 @@ MonoBehaviour:
   isStunned: 0
   speedReduction: 0
   SpellSound: {fileID: 8300000, guid: f6f0e460446168549843f96620a11ec4, type: 3}
+  SpellColor: {r: 0.043168355, g: 0.4867924, b: 0.06036172, a: 0}
   UtilityNaturePrefab: {fileID: 1991071348108204637, guid: edb94c578a4c3694c8bc7fef6da15896, type: 3}
   Player: {fileID: 3806258787461687420, guid: 51037a69ea3ad484eb110580a2932357, type: 3}
   Playercontroller: {fileID: 7878445409492185271, guid: 51037a69ea3ad484eb110580a2932357, type: 3}

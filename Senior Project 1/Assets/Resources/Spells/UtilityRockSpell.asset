@@ -24,9 +24,11 @@ MonoBehaviour:
   isStunned: 0
   speedReduction: 0
   SpellSound: {fileID: 8300000, guid: f6f0e460446168549843f96620a11ec4, type: 3}
+  SpellColor: {r: 0.5773585, g: 0.2794741, b: 0, a: 0}
   UtilityRockPrefab: {fileID: 7142360201937261360, guid: f16e3979055d03d4c843686cbf7b431a, type: 3}
   Player: {fileID: 0}
   Playercontroller: {fileID: 7878445409492185271, guid: 51037a69ea3ad484eb110580a2932357, type: 3}
   Duration: 2
+  FinalDuration: 0
   range: 0
   angle: 0

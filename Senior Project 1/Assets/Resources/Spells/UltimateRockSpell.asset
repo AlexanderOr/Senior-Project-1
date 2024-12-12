@@ -25,6 +25,7 @@ MonoBehaviour:
   isStunned: 1
   speedReduction: 0
   SpellSound: {fileID: 8300000, guid: f6f0e460446168549843f96620a11ec4, type: 3}
+  SpellColor: {r: 0.6754716, g: 0.36005434, b: 0, a: 0}
   UltimateRockPrefab: {fileID: 8901667152801321130, guid: a7dfe647bd2f6884a9448388dc996ca3, type: 3}
   range: 0
   angle: 0

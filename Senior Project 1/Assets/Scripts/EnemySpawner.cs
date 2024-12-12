@@ -29,7 +29,8 @@ public class EnemySpawner : MonoBehaviour
     {
         if (gameTimer.Timer > 60f)
         {
-            randomEnemy = Random.Range(1, 2);
+            Debug.Log(gameTimer.Timer);
+            randomEnemy = Random.Range(1, 3);
         }
         else
         {

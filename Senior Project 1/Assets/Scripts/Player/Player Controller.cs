@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     public EnemyBehavior EnemyBehavior;
     public DodgeCoolDown dodgeCoolDown;
+    public CastBarScript castBarScript;
 
     private const string Horizontal = "Horizontal";
     private const string Vertical = "Vertical";
@@ -229,16 +230,13 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetMouseButton(0) && SpellHolder.playerSpells.Count > currentSpellIndex)
             {
-                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector2 mousePos2 = new Vector2(mousePosition.x, mousePosition.y);
-                Debug.Log(mousePosition.x + " " + mousePosition.y);
-                Vector2 playerPosition = transform.position;
+                
                 Spells currentSpell = SpellHolder.playerSpell[currentSpellIndex];
 
                 if(GetSpellCooldown(currentSpellIndex) <= 0)
                 {
                     //SpellHolder.playerSpell[currentSpellIndex].CastSpell(mousePos2, playerPosition);
-                    StartCoroutine(CastSpell(currentSpell, mousePos2, playerPosition));
+                    StartCoroutine(CastSpell(currentSpell));
                 }
                 
 
@@ -264,8 +262,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator CastSpell(Spells spell, Vector2 mousePos2, Vector2 playerPosition)
+    IEnumerator CastSpell(Spells spell)
     {
+        castBarScript.ActivateBar(spell);
         // Apply speed reduction during casting (25% slower)
         float originalSpeed = MoveSpeed;
         MoveSpeed *= 0.75f; // Reducing player speed by 25%
@@ -277,6 +276,10 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(spell.CastTime);
 
         // Once casting is done, cast the spell
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePos2 = new Vector2(mousePosition.x, mousePosition.y);
+        Debug.Log(mousePosition.x + " " + mousePosition.y);
+        Vector2 playerPosition = transform.position;
         spell.CastSpell(mousePos2, playerPosition);
 
         // SFX

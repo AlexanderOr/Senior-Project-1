@@ -10,7 +10,8 @@ public class UtilityRockSpells : Spells
     public GameObject UtilityRockPrefab;
     public GameObject Player;
     public PlayerController Playercontroller;
-    public float Duration = 3;
+    public float Duration = 2;
+    public float FinalDuration;
     public float range;
     public float angle;
 
@@ -33,15 +34,16 @@ public class UtilityRockSpells : Spells
         // Instantiate and rotate the cone
         GameObject UtilityRockSpell = Instantiate(UtilityRockPrefab, playersPosition, Quaternion.Euler(0, 0, 0));
         UtilityRockSpell.transform.parent = Player.transform;
+        FinalDuration = Duration + Level;
 
         // Optionally, add logic for duration, effects, etc.
-        Playercontroller.ImmuneRock(Duration);
+        Playercontroller.ImmuneRock(FinalDuration);
         Debug.Log($"Casting {SpellName} towards {targetPosition}");
 
     }
 
     public override void SetDescription()
     {
-        description = $"A Utility rock spell that protects the player from damage for {Duration} seconds.";
+        description = $"A Utility rock spell that protects the player from damage for {Duration + Level} seconds.";
     }
 }
