@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BasicArcaneSpell
   m_EditorClassIdentifier: 
   SpellName: Arcane Missle
-  description: Casts a piercing bolt of energy towards your target dealing X damage
+  description: A basic Arcane spell that deals 20 + (5) damage
   Level: 1
   type: 4
   CastTime: 0

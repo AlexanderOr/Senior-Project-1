@@ -148,6 +148,10 @@ public class RangedEnemyAI : MonoBehaviour
                 {
                     speed = Mathf.Max(2f, speed - spellData.speedReduction);
                 }
+                if (spellData.isKnockedBack)
+                {
+                    PushBack(spellData.ForceAmount, collision);
+                }
 
                 // Destroy the spell object after applying its effects
                 if (damageSounds.Length > 0)
@@ -198,5 +202,22 @@ public class RangedEnemyAI : MonoBehaviour
                 isBleeding = false;
             }
         }
+    }
+
+    public void PushBack(float force, Collider2D collision)
+    {
+        //Vector2 pushDirection = (transform.position - collision.transform.position).normalized;
+        //RB.velocity = Vector2.zero; // Reset velocity
+        //RB.AddForce(pushDirection * force, ForceMode2D.Impulse);
+
+        StartCoroutine(TemporarilyDisableMovement(0.3f));
+        Debug.Log("pushed");
+    }
+
+    private IEnumerator TemporarilyDisableMovement(float duration)
+    {
+        speed = 0; // Disable movement
+        yield return new WaitForSeconds(duration);
+        speed = 3f; // Restore movement
     }
 }

@@ -16,6 +16,8 @@ public abstract class Spells : ScriptableObject
     public int Damage;
     public bool isBleeding;
     public bool isStunned;
+    public bool isKnockedBack;
+    public float ForceAmount = 10;
     public float speedReduction = 0f;
     public AudioClip SpellSound;
     public Color SpellColor;

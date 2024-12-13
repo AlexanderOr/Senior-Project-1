@@ -33,8 +33,8 @@ public class EnemyBehavior : MonoBehaviour
     public AudioSource audioSource;
 
     //int for drops
-    public int ChestDropChance = 20;
-    public int VortexDropChance = 25;
+    public int ChestDropChance = 1;
+    public int VortexDropChance = 5;
     public int RandomChestChance;
     public int RandomVortexChance;
 
@@ -158,13 +158,20 @@ public class EnemyBehavior : MonoBehaviour
                 {
                     isBleeding = true;
                 }
+
                 if (spellData.isStunned)
                 {
                     //isStunned = true;
                 }
+
                 if (spellData.speedReduction > 0f)
                 {
                     MoveSpeed = Mathf.Max(2f, MoveSpeed - spellData.speedReduction);
+                }
+
+                if (spellData.isKnockedBack)
+                {
+                    PushBack(spellData.ForceAmount, collision);
                 }
 
                 if (damageSounds.Length > 0)
@@ -177,6 +184,7 @@ public class EnemyBehavior : MonoBehaviour
                 // Destroy the spell object after applying its effects
                 if (spellData.SpellName != "Landslide" || spellData.SpellName != "Blizzard" || spellData.type != SpellType.Arcane || spellData.SpellName != "Arcane Missle" || spellData.SpellName != "Disintegrate")
                 {
+                    Debug.Log("Spell was not one of the detected spells");
                     Destroy(collision.gameObject);
                 }
                 
@@ -232,73 +240,23 @@ public class EnemyBehavior : MonoBehaviour
             return;
         }
     }
+
+    public void PushBack(float force, Collider2D collision)
+    {
+        //Vector2 pushDirection = (transform.position - collision.transform.position).normalized;
+        //RB.velocity = Vector2.zero; // Reset velocity
+        //RB.AddForce(pushDirection * force, ForceMode2D.Impulse);
+
+        StartCoroutine(TemporarilyDisableMovement(0.3f));
+        Debug.Log("pushed");
+    }
+
+    private IEnumerator TemporarilyDisableMovement(float duration)
+    {
+        MoveSpeed = 0; // Disable movement
+        yield return new WaitForSeconds(duration);
+        MoveSpeed = 3f; // Restore movement
+    }
 }
 
 
-
-/*if (collision.name == "Pebble(Clone)")
-            {
-                //knockback
-                Destroy(collision.gameObject);
-                StartCoroutine(Damage(10));
-            }
-
-            if (collision.name == "Thorn Throw(Clone)")
-            {
-                isBleeding = true;
-                Destroy(collision.gameObject);
-                StartCoroutine(Damage(10));
-            }
-
-            if (collision.name == "Leaf Orb(Clone)")
-            {
-                isBleeding = true;
-                Destroy(collision.gameObject);
-                StartCoroutine(Damage(30));
-            }
-
-            if (collision.name == "Arcane Missle(Clone)")
-            {
-                //pen
-                StartCoroutine(Damage(10));
-            }
-
-            if (collision.name == "Disintegrate(Clone)")
-            {
-                StartCoroutine(Damage(20));
-            }
-
-            if (collision.name == "Snowball(Clone)")
-            {
-                if (MoveSpeed > 2)
-                {
-                    MoveSpeed -= 1f;
-                }
-                Destroy(collision.gameObject);
-                StartCoroutine(Damage(10));
-            }
-
-            if (collision.name == "Ice Zone(Clone)")
-            {
-                if (MoveSpeed > 2)
-                {
-                    MoveSpeed -= 1f;
-                }
-                StartCoroutine(Damage(20));
-            }
-
-            if (collision.name == "FireLance(Clone)")
-            {
-                Destroy(collision.gameObject);
-                StartCoroutine(Damage(20));
-            }
-
-            if (collision.name == "center(Clone)")
-            {
-                StartCoroutine(Damage(10));
-            }
-
-            if (collision.name == "Upheaval(Clone)")
-            {
-                StartCoroutine(Damage(20));
-            }*/

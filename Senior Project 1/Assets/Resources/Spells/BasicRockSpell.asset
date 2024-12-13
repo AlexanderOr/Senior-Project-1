@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BasicRockSpell
   m_EditorClassIdentifier: 
   SpellName: Pebble
-  description: casts a sturdy rock towards your target dealing X damage and slighly
-    pushing bakc any enemies hit
+  description: A basic rock spell that deals 15 + (5) damage and slightly pushes
+    enemies back.
   Level: 1
   type: 2
   CastTime: 0
@@ -23,8 +23,11 @@ MonoBehaviour:
   Damage: 15
   isBleeding: 0
   isStunned: 0
+  isKnockedBack: 1
+  ForceAmount: 100
   speedReduction: 0
   SpellSound: {fileID: 8300000, guid: f7b7bc482ae27824383e58637d503afe, type: 3}
+  SpellColor: {r: 0, g: 0, b: 0, a: 0}
   BasicRockPrefab: {fileID: 1177943988684683034, guid: a5b8955f5b6baa0488f0006a02e53dac, type: 3}
   range: 10
   angle: 0
