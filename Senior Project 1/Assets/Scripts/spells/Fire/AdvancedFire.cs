@@ -18,7 +18,7 @@ public class AdvancedFireSpell : Spells
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         // Instantiate and rotate the cone
-        GameObject fireLance = Instantiate(FireLancePrefab, playersPosition, Quaternion.Euler(0, 0, angle));
+        GameObject fireLance = Instantiate(FireLancePrefab, playersPosition, Quaternion.Euler(0, 0, angle + 90));
 
         // Optionally, add logic for duration, effects, etc.
         Debug.Log($"Casting {SpellName} towards {targetPosition}");
