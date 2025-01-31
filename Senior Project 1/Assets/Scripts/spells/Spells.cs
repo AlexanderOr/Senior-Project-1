@@ -21,6 +21,7 @@ public abstract class Spells : ScriptableObject
     public float speedReduction = 0f;
     public AudioClip SpellSound;
     public Color SpellColor;
+    public bool DeleteOnHit = false;
 
     public abstract void CastSpell(Vector2 targetPosition, Vector2 playerPosition);
 

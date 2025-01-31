@@ -23,9 +23,12 @@ MonoBehaviour:
   Damage: 20
   isBleeding: 1
   isStunned: 0
+  isKnockedBack: 0
+  ForceAmount: 10
   speedReduction: 0
   SpellSound: {fileID: 8300000, guid: 1cd667640143f644b85c61e693c559c7, type: 3}
   SpellColor: {r: 0, g: 0.5999999, b: 0.054390185, a: 0}
+  DeleteOnHit: 1
   AdvancedNaturePrefab: {fileID: 2407930709059113448, guid: a465ec36bdd5e764daad4c64938c2224, type: 3}
   range: 0
   angle: 0

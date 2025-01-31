@@ -22,9 +22,12 @@ MonoBehaviour:
   Damage: 20
   isBleeding: 0
   isStunned: 0
+  isKnockedBack: 0
+  ForceAmount: 10
   speedReduction: 0
   SpellSound: {fileID: 8300000, guid: f7b7bc482ae27824383e58637d503afe, type: 3}
   SpellColor: {r: 0.6357683, g: 0.076703414, b: 0.645283, a: 0}
+  DeleteOnHit: 1
   BasicArcanePrefab: {fileID: 708637690087869856, guid: 65d5fd919ce13ee42a1fcd8ee37a2391, type: 3}
   range: 10
   angle: 0

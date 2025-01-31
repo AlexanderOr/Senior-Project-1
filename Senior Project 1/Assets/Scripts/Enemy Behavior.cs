@@ -38,6 +38,9 @@ public class EnemyBehavior : MonoBehaviour
     public int RandomChestChance;
     public int RandomVortexChance;
 
+    //Health Increase over time
+    public float Counter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,6 +79,18 @@ public class EnemyBehavior : MonoBehaviour
         if (isBleeding == true)
         {
             StartCoroutine(Bleeding());
+        }
+
+        //Increases add hp every X seconds
+        Counter += Time.deltaTime;
+
+        if (Counter > 30f)
+        {
+            EnemyMaxHP += 10;
+            EnemyHP += 10;
+
+            //reset counter
+            Counter = 0;
         }
     }
 
@@ -182,7 +197,7 @@ public class EnemyBehavior : MonoBehaviour
                 }
 
                 // Destroy the spell object after applying its effects
-                if (spellData.SpellName != "Landslide" || spellData.SpellName != "Blizzard" || spellData.type != SpellType.Arcane || spellData.SpellName != "Arcane Missle" || spellData.SpellName != "Disintegrate")
+                if (spellData.DeleteOnHit == true)
                 {
                     Debug.Log("Spell was not one of the detected spells");
                     Destroy(collision.gameObject);
