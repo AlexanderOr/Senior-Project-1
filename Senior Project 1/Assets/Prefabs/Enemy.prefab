@@ -402,6 +402,7 @@ MonoBehaviour:
   VortexDropChance: 25
   RandomChestChance: 0
   RandomVortexChance: 0
+  Counter: 0
 --- !u!50 &3113479836509577659
 Rigidbody2D:
   serializedVersion: 4
@@ -462,7 +463,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
