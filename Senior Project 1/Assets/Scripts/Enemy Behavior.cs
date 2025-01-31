@@ -204,13 +204,8 @@ public class EnemyBehavior : MonoBehaviour
                 }
                 
                 StartCoroutine(Damage(finalDamage));
-
-
             }
-
-
         }
-
     }
 
     IEnumerator Damage(int DamageAmount)

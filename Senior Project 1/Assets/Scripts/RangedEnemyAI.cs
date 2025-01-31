@@ -133,7 +133,7 @@ public class RangedEnemyAI : MonoBehaviour
 
                 int finalDamage = spellData.Damage + (5 * (spellData.Level - 1));
                 // Apply damage based on the spell's damage property
-                StartCoroutine(Damage(finalDamage));
+                
 
                 // Apply status effects based on the spell's properties
                 if (spellData.isBleeding)
@@ -161,11 +161,13 @@ public class RangedEnemyAI : MonoBehaviour
 
                 }
 
-                // Destroy the spell object after applying its effects
-                if (spellData.SpellName != "Landslide" || spellData.SpellName != "Blizzard" || spellData.type != SpellType.Arcane || spellData.SpellName != "Arcane Missle" || spellData.SpellName != "Disintegrate")
+                if (spellData.DeleteOnHit == true)
                 {
+                    Debug.Log("Spell was not one of the detected spells");
                     Destroy(collision.gameObject);
                 }
+
+                StartCoroutine(Damage(finalDamage));
 
             }
 
