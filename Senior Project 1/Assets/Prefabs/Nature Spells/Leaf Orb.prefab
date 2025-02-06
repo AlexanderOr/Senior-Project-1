@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5018252461491725968}
   - component: {fileID: 1592169147912556572}
   - component: {fileID: -8246458807337956352}
+  - component: {fileID: 5224086736044984428}
   m_Layer: 8
   m_Name: Leaf Orb
   m_TagString: Spells
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.99, y: -5.77, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.18586686, g: 0.4339623, b: 0.19804004, a: 1}
+  m_Sprite: {fileID: 860745505191059907, guid: c40c2724f69d26e41bfa0397f71e2035, type: 3}
+  m_Color: {r: 0, g: 0.46226418, b: 0.028891511, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -134,9 +135,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0021641254, y: 0.078991145}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.08340302
 --- !u!50 &1592169147912556572
 Rigidbody2D:
   serializedVersion: 4
@@ -177,3 +178,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellData: {fileID: 11400000, guid: f37aa027b5ba9dc488a6a7bd0a2a969b, type: 2}
+--- !u!95 &5224086736044984428
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2407930709059113448}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: af08496ed32baec4fbfb34a4a4a12601, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
