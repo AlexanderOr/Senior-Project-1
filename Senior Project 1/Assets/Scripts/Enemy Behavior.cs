@@ -196,6 +196,9 @@ public class EnemyBehavior : MonoBehaviour
 
                 }
 
+                Debug.Log($"Spell: {spellData.name}, DeleteOnHit: {spellData.DeleteOnHit}");
+
+
                 // Destroy the spell object after applying its effects
                 if (spellData.DeleteOnHit == true)
                 {

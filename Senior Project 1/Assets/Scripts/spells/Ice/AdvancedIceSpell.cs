@@ -18,7 +18,7 @@ public class AdvancedIceSpells : Spells
 
 
         // Instantiate and rotate the cone
-        GameObject AvancedIce = Instantiate(AdvancedIcePrefab, targetPosition, Quaternion.Euler(0, 0, angle));
+        GameObject AvancedIce = Instantiate(AdvancedIcePrefab, targetPosition, Quaternion.identity);
 
         // Optionally, add logic for duration, effects, etc.
         Debug.Log($"Casting {SpellName} towards {targetPosition}");
