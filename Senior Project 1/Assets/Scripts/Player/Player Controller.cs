@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public EnemyBehavior EnemyBehavior;
     public DodgeCoolDown dodgeCoolDown;
     public CastBarScript castBarScript;
+    public SpriteRenderer spriteRenderer;
 
     private const string Horizontal = "Horizontal";
     private const string Vertical = "Vertical";
@@ -68,6 +69,7 @@ public class PlayerController : MonoBehaviour
         Player_HP = 100;
         Player_MaxHP = 100;
         audioSource = GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
     }
 
@@ -93,6 +95,16 @@ public class PlayerController : MonoBehaviour
 
             animator.SetFloat(Horizontal, Movement.x);
             animator.SetFloat(Vertical, Movement.y);
+
+            if(Movement.x < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else
+            {
+                spriteRenderer.flipX = false;
+
+            }
 
             if (Input.GetKeyDown(KeyCode.Space) && Movement.x != 0 && DodgeCDTimer == 0)
             {
@@ -216,12 +228,14 @@ public class PlayerController : MonoBehaviour
 
     void HandleSpellSelection()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) currentSpellIndex = 0;
-        if (Input.GetKeyDown(KeyCode.Alpha2)) currentSpellIndex = 1;
-        if (Input.GetKeyDown(KeyCode.Alpha3)) currentSpellIndex = 2;
-        if (Input.GetKeyDown(KeyCode.Alpha4)) currentSpellIndex = 3;
-        if (Input.GetKeyDown(KeyCode.Alpha5)) currentSpellIndex = 4;
-
+        if(!isCasting)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1)) currentSpellIndex = 0;
+            if (Input.GetKeyDown(KeyCode.Alpha2)) currentSpellIndex = 1;
+            if (Input.GetKeyDown(KeyCode.Alpha3)) currentSpellIndex = 2;
+            if (Input.GetKeyDown(KeyCode.Alpha4)) currentSpellIndex = 3;
+            if (Input.GetKeyDown(KeyCode.Alpha5)) currentSpellIndex = 4;
+        }
     }
 
     void HandleSpellCasting()

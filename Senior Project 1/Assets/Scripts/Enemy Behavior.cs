@@ -9,7 +9,7 @@ public class EnemyBehavior : MonoBehaviour
     private float LookSpeed = 10f;
     public GameObject Player;
     public HitBox HitBox;
-    public bool HasTarget;
+    public bool HasTarget = false;
     public Animator Animator;
     bool isBleeding = false;
 
@@ -21,6 +21,7 @@ public class EnemyBehavior : MonoBehaviour
     public float EnemyAttackDistance = 1;
 
     public PlayerController playerController;
+    public SpriteRenderer spriteRenderer;
     public GameObject EXPPrefab;
     public GameObject VortexGO;
     public GameObject ChestGO;
@@ -49,6 +50,7 @@ public class EnemyBehavior : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         healthBar = GetComponentInChildren<EnemyHPBar>();
         audioSource = GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Awake()
@@ -68,7 +70,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             EnemyDistance = Vector2.Distance(Player.transform.position, transform.position);
             
-            HasTarget = HitBox.Colliders.Count > 0;
+            //HasTarget = HitBox.Colliders.Count > 0;
 
             UpdateDirection();
         }
@@ -108,7 +110,16 @@ public class EnemyBehavior : MonoBehaviour
         Quaternion TargetRotation = Quaternion.LookRotation(transform.forward, DirectionOfPlayer);
         Quaternion rotation = Quaternion.RotateTowards(transform.rotation, TargetRotation, LookSpeed);
     
-        RB.SetRotation(rotation);
+        //RB.SetRotation(rotation);
+        if (Player.transform.position.x < this.transform.position.x)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+        }
+        
         Move();
     }
 
@@ -128,15 +139,17 @@ public class EnemyBehavior : MonoBehaviour
             else if (HasTarget == false)
             {
                 Animator.SetBool("InRange", false);
-                RB.velocity = transform.up * MoveSpeed;
+                //RB.velocity = transform.up * MoveSpeed;
+                Vector2 newPos = Vector2.MoveTowards(this.transform.position, Player.transform.position, 2f * Time.deltaTime);
+                this.transform.position = newPos;
             }
         }
         else if (EnemyHP <= 0)
         {
             Animator.SetBool("HasHP", false);
             Instantiate(EXPPrefab, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
-            RandomChestChance = Random.Range(1, 100);
-            RandomVortexChance = Random.Range(1, 100);
+            RandomChestChance = Random.Range(1, 200);
+            RandomVortexChance = Random.Range(1, 200);
             
             if (ChestDropChance >= RandomChestChance)
             {
