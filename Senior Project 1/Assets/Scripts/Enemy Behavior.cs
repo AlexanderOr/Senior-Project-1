@@ -81,6 +81,11 @@ public class EnemyBehavior : MonoBehaviour
         if (isBleeding == true)
         {
             StartCoroutine(Bleeding());
+            //enable icon for bleeding
+        }
+        else
+        {
+            //disable icon for bleeding
         }
 
         //Increases add hp every X seconds
@@ -94,6 +99,7 @@ public class EnemyBehavior : MonoBehaviour
             //reset counter
             Counter = 0;
         }
+
     }
 
     private void UpdateDirection()
@@ -228,8 +234,12 @@ public class EnemyBehavior : MonoBehaviour
     {
         EnemyHP -= DamageAmount;
         healthBar.UpdateHealthBar(EnemyHP, EnemyMaxHP);
-        Debug.Log(EnemyHP);
+        //Debug.Log(EnemyHP);
+        spriteRenderer.color = new Color (1, 0, 0, 1);
+        Debug.Log(spriteRenderer.color);
         yield return new WaitForSeconds(0.5f);
+        spriteRenderer.color = new Color (1, 1, 1, 1);
+        Debug.Log(spriteRenderer.color);
     }
 
     IEnumerator Bleeding()
@@ -244,7 +254,7 @@ public class EnemyBehavior : MonoBehaviour
             if (bleedTicks < bleedTime)
             {
                 StartCoroutine(Damage(bleedDamage));
-                //yield return new WaitForSeconds(1f);
+                
                 bleedTicks++;
             }
             else
