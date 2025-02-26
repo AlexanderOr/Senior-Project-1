@@ -168,7 +168,10 @@ public class PlayerController : MonoBehaviour
             if(ImmuneTimer <= 0) { Immune = false; }
         }
 
-        
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            LevelUp();
+        }
 
     }
 
