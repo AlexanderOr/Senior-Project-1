@@ -13,15 +13,17 @@ public class PlayerController : MonoBehaviour
     public static int Player_MaxEXP = 50;
     public static int Player_EXP = 0;
     public static int Player_Level = 0;
-    bool Invincible = false;
+    public bool Invincible;
     float Iframes = 0.5f;
     float IframeTimer;
     public float Player_DodgeCD = 5;
     public float DodgeCDTimer;
     public float RollDist = 10;
-    bool Immune = false;
+    public bool Immune;
     float ImmuneTimer;
     private bool isCasting = false;
+
+    public GameObject Indicator;
 
     public bool isPaused;
 
@@ -165,12 +167,26 @@ public class PlayerController : MonoBehaviour
             Debug.Log(ImmuneTimer);
             Debug.Log(Immune);
 
-            if(ImmuneTimer <= 0) { Immune = false; }
+            if(ImmuneTimer <= 0) 
+            { 
+                Immune = false; 
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.F1))
         {
             LevelUp();
+        }
+
+        if (isCasting)
+        {
+            Indicator.SetActive(true);
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Indicator.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
+        }
+        else
+        {
+            Indicator.SetActive(false);
         }
 
     }
@@ -204,7 +220,7 @@ public class PlayerController : MonoBehaviour
             isPaused = true;
         }
 
-        if(collision.tag == "EnemyBullet")
+        if(collision.tag == "EnemyBullet" && Immune == false)
         {
             Player_HP -= 5;
             Destroy(collision.gameObject);
@@ -353,6 +369,7 @@ public class PlayerController : MonoBehaviour
 
     public void ImmuneRock(float Duration)
     {
+        Debug.Log("Is immune for " + Duration);
         Immune = true;
         ImmuneTimer = Duration;
     }

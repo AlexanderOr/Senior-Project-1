@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
 
 public class HPManager : MonoBehaviour
 {
@@ -28,6 +27,11 @@ public class HPManager : MonoBehaviour
     public GameObject SpellBorder4;
     public GameObject SpellBorder5;
 
+    public TMP_Text spellLevel1;
+    public TMP_Text spellLevel2;
+    public TMP_Text spellLevel3;
+    public TMP_Text spellLevel4;
+    public TMP_Text spellLevel5;
 
     public void SetSpell(Spells spells)
     {
@@ -36,25 +40,35 @@ public class HPManager : MonoBehaviour
             if (spellHolder.i == 0)
             {
                 spellIcon1.sprite = spells.Icon;
+                spellLevel1.text = spells.Level.ToString();
             }
             else if (spellHolder.i == 1)
             {
                 spellIcon2.sprite = spells.Icon;
+                spellLevel2.text = spells.Level.ToString();
             }
             else if (spellHolder.i == 2)
             {
                 spellIcon3.sprite = spells.Icon;
+                spellLevel3.text = spells.Level.ToString();
             }
             else if (spellHolder.i == 3)
             {
                 spellIcon4.sprite = spells.Icon;
+                spellLevel4.text = spells.Level.ToString();
             }
             else if (spellHolder.i == 4)
             {
                 spellIcon5.sprite = spells.Icon;
+                spellLevel5.text = spells.Level.ToString();
             }
 
         }
+    }
+
+    public void updateLevel(Spells spells)
+    {
+        
     }
 
     void Update()
@@ -111,7 +125,8 @@ public class HPManager : MonoBehaviour
                 break;
 
         }
-        
+
+
     }
 
 }

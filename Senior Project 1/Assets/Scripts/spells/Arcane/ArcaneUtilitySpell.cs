@@ -27,7 +27,7 @@ public class UtilityArcaneSpells : Spells
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         // Instantiate and rotate the cone
-        //GameObject UtilityNatureSpell = Instantiate(UtilityArcanePrefab, playersPosition, Quaternion.Euler(0, 0, 0));
+        GameObject UtilityNatureSpell = Instantiate(UtilityArcanePrefab, playersPosition, Quaternion.Euler(0, 0, 0));
 
         // Optionally, add logic for duration, effects, etc.
         //Playercontroller.Teleport(targetPosition);

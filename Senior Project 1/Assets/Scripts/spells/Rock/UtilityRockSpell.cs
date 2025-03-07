@@ -38,7 +38,8 @@ public class UtilityRockSpells : Spells
 
         // Optionally, add logic for duration, effects, etc.
         Playercontroller.ImmuneRock(FinalDuration);
-        Debug.Log($"Casting {SpellName} towards {targetPosition}");
+        Debug.Log(FinalDuration);
+        //Debug.Log($"Casting {SpellName} towards {targetPosition}");
 
     }
 
