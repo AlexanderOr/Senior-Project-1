@@ -19,13 +19,16 @@ MonoBehaviour:
   type: 2
   CastTime: 3
   CoolDown: 60
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 6147c9e7fda7f224d8474ab0ee77be4e, type: 3}
   Damage: 40
   isBleeding: 0
   isStunned: 1
+  isKnockedBack: 0
+  ForceAmount: 10
   speedReduction: 0
   SpellSound: {fileID: 8300000, guid: f6f0e460446168549843f96620a11ec4, type: 3}
   SpellColor: {r: 0.6754716, g: 0.36005434, b: 0, a: 0}
+  DeleteOnHit: 0
   UltimateRockPrefab: {fileID: 8901667152801321130, guid: a7dfe647bd2f6884a9448388dc996ca3, type: 3}
   range: 0
   angle: 0

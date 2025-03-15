@@ -60,6 +60,15 @@ public class PlayerController : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip[] CastSounds;
 
+
+    //death anim
+    public RenderTexture blurTexture;
+    public Camera cam1;
+    public Camera cam2;
+    public GameObject PixelatedPanel;
+    private int originalHeight;
+    private int originalWidth;
+
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
@@ -72,7 +81,7 @@ public class PlayerController : MonoBehaviour
         Player_MaxHP = 100;
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        ResetRenderTexture();
     }
 
     private void Update()
@@ -81,6 +90,18 @@ public class PlayerController : MonoBehaviour
         HandleSpellSelection();
         HandleSpellCasting();
         UpdateSpellCooldownUI();
+
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        if (scroll < 0 && currentSpellIndex < 4)
+        {
+            currentSpellIndex++;
+        }
+
+        if(scroll > 0 && currentSpellIndex > 0)
+        {
+            currentSpellIndex--;
+        }
+
 
         if (Player_EXP >= Player_MaxEXP)
         {
@@ -135,8 +156,9 @@ public class PlayerController : MonoBehaviour
 
             if (Player_HP <= 0)
             {
-                SceneManager.LoadScene("GameOver");
                 audioSource.PlayOneShot(DeathSound);
+                StartCoroutine(DeathTransition());
+                
             }
         }
         else if(isPaused == true)
@@ -431,6 +453,53 @@ public class PlayerController : MonoBehaviour
             int randomIndex = Random.Range(0, damageSounds.Length);
             audioSource.PlayOneShot(damageSounds[randomIndex]);
         }
+    }
+
+    IEnumerator DeathTransition()
+    {
+        isPaused = true;
+        originalWidth = blurTexture.width;
+        originalHeight = blurTexture.height;
+
+        PixelatedPanel.SetActive(true);
+        cam1.gameObject.SetActive(false);
+        cam2.gameObject.SetActive(true);
+
+        int steps = 75;
+        float waitTime = 0.04f;
+
+        for (int i = 0; i < steps; i++)
+        {
+            yield return new WaitForSeconds(waitTime);
+            AdjustRenderTextureSize(i, steps);
+        }
+
+        SceneManager.LoadScene("GameOver");
+    }
+
+    private void AdjustRenderTextureSize(int step, int totalSteps)
+    {
+        blurTexture.Release();
+
+        int newWidth = Mathf.Max(1, (int)(originalWidth * (totalSteps - step) / totalSteps));
+        int newHeight = Mathf.Max(1, (int)(originalHeight * (totalSteps - step) / totalSteps));
+
+        blurTexture.width = newWidth;
+        blurTexture.height = newHeight;
+        blurTexture.Create();
+    }
+
+    private void ResetRenderTexture()
+    {
+        blurTexture.Release();
+        blurTexture.width = 1920;
+        blurTexture.height = 1080;
+        blurTexture.Create();
+    }
+
+    private void OnApplicationQuit()
+    {
+        ResetRenderTexture();
     }
 
 
