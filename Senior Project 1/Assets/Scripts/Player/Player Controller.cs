@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public DodgeCoolDown dodgeCoolDown;
     public CastBarScript castBarScript;
     public SpriteRenderer spriteRenderer;
+    public DamageEffect damageEffect;
 
     private const string Horizontal = "Horizontal";
     private const string Vertical = "Vertical";
@@ -92,12 +93,12 @@ public class PlayerController : MonoBehaviour
         UpdateSpellCooldownUI();
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        if (scroll < 0 && currentSpellIndex < 4)
+        if (scroll < 0 && currentSpellIndex < 4 && !isCasting)
         {
             currentSpellIndex++;
         }
 
-        if(scroll > 0 && currentSpellIndex > 0)
+        if(scroll > 0 && currentSpellIndex > 0 && !isCasting)
         {
             currentSpellIndex--;
         }
@@ -220,6 +221,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("hit");
             Player_HP = Player_HP - 5;
             IframeCD();
+            damageEffect.ShowDamageEffect();
+            PlayRandomDamageSound();
             Debug.Log(Player_HP);            
         }        
     }
@@ -264,7 +267,7 @@ public class PlayerController : MonoBehaviour
         {
             Invincible = false;
         }
-        Debug.Log(IframeTimer);
+        //Debug.Log(IframeTimer);
     }
 
     void HandleSpellSelection()
@@ -337,6 +340,12 @@ public class PlayerController : MonoBehaviour
         Vector2 playerPosition = transform.position;
         spell.CastSpell(mousePos2, playerPosition);
 
+        float pitch = 1;
+
+        pitch = Random.Range(.8f, 1.2f);
+
+        audioSource.pitch = pitch;
+
         // SFX
         audioSource.PlayOneShot(spell.SpellSound);
 
@@ -400,6 +409,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Invincible == false && isPaused == false && Immune == false)
         {
+            damageEffect.ShowDamageEffect();
             Player_HP -= damage;
             PlayRandomDamageSound();
             IframeCD();

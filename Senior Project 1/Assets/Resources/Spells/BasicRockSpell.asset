@@ -26,7 +26,7 @@ MonoBehaviour:
   isKnockedBack: 1
   ForceAmount: 100
   speedReduction: 0
-  SpellSound: {fileID: 8300000, guid: f7b7bc482ae27824383e58637d503afe, type: 3}
+  SpellSound: {fileID: 8300000, guid: 9ec29eb842fe9354086cdc7d8df4e7f8, type: 3}
   SpellColor: {r: 0, g: 0, b: 0, a: 0}
   DeleteOnHit: 1
   BasicRockPrefab: {fileID: 1177943988684683034, guid: a5b8955f5b6baa0488f0006a02e53dac, type: 3}

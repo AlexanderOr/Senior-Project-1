@@ -22,8 +22,12 @@ MonoBehaviour:
   Damage: 10
   isBleeding: 0
   isStunned: 0
+  isKnockedBack: 0
+  ForceAmount: 10
   speedReduction: 0
-  SpellSound: {fileID: 8300000, guid: f7b7bc482ae27824383e58637d503afe, type: 3}
+  SpellSound: {fileID: 8300000, guid: 0b0685290b9f9cf45809f900aed10f89, type: 3}
+  SpellColor: {r: 0, g: 0, b: 0, a: 0}
+  DeleteOnHit: 0
   FireConePrefab: {fileID: 609070407655874589, guid: 6c653d64531f915498c83a4b8b8a7c6c, type: 3}
   range: 10
   angle: 45

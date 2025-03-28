@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BasicIceSpell
   m_EditorClassIdentifier: 
   SpellName: Snowball
-  description: Casts a small ball of ice that does X damage and slows enemies hit.
+  description: A basic ice spell that deals 15 + (5) damage and slows enemies.
   Level: 1
   type: 1
   CastTime: 0
@@ -25,7 +25,7 @@ MonoBehaviour:
   isKnockedBack: 0
   ForceAmount: 10
   speedReduction: 1
-  SpellSound: {fileID: 8300000, guid: f7b7bc482ae27824383e58637d503afe, type: 3}
+  SpellSound: {fileID: 8300000, guid: e5700814f23107a478cb732b8c76c183, type: 3}
   SpellColor: {r: 0, g: 0, b: 0, a: 0}
   DeleteOnHit: 1
   BasicIcePrefab: {fileID: 8838365660618344456, guid: 1d98c3ca97ee79549802a649e677a429, type: 3}
