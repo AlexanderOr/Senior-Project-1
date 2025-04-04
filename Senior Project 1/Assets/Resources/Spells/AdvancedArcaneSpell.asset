@@ -20,12 +20,15 @@ MonoBehaviour:
   CastTime: 2
   CoolDown: 5
   Icon: {fileID: 21300000, guid: c44cd3c328114b7479984e70777d6112, type: 3}
-  Damage: 25
+  Damage: 20
   isBleeding: 0
   isStunned: 0
+  isKnockedBack: 0
+  ForceAmount: 10
   speedReduction: 0
-  SpellSound: {fileID: 8300000, guid: 1cd667640143f644b85c61e693c559c7, type: 3}
+  SpellSound: {fileID: 8300000, guid: c197a6eddbd17594f99f9ad5886a8b2c, type: 3}
   SpellColor: {r: 0.5849056, g: 0, b: 0.5339422, a: 0}
+  DeleteOnHit: 0
   AdvancedArcanePrefab: {fileID: 4626086682747115392, guid: 6223f606ad809d144a021a27172387fa, type: 3}
   range: 0
   angle: 0

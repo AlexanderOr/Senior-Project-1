@@ -19,13 +19,13 @@ MonoBehaviour:
   CastTime: 2
   CoolDown: 5
   Icon: {fileID: 21300000, guid: 22a8fe169485aba4299a6feecf49d16a, type: 3}
-  Damage: 20
+  Damage: 30
   isBleeding: 0
   isStunned: 0
   isKnockedBack: 0
   ForceAmount: 10
   speedReduction: 0
-  SpellSound: {fileID: 8300000, guid: 1cd667640143f644b85c61e693c559c7, type: 3}
+  SpellSound: {fileID: 8300000, guid: 83ad9d931ca1db84792ce95f49a3aca4, type: 3}
   SpellColor: {r: 1, g: 0.43581238, b: 0, a: 0}
   DeleteOnHit: 1
   FireLancePrefab: {fileID: 1180221944459314816, guid: a360ba426d3ad8c46af5dcc99e15e983, type: 3}

@@ -20,13 +20,13 @@ MonoBehaviour:
   CastTime: 2
   CoolDown: 5
   Icon: {fileID: 21300000, guid: cf5b0b9050a284045aba1a3507993a08, type: 3}
-  Damage: 25
+  Damage: 20
   isBleeding: 0
   isStunned: 0
   isKnockedBack: 0
   ForceAmount: 10
   speedReduction: 0
-  SpellSound: {fileID: 8300000, guid: 1cd667640143f644b85c61e693c559c7, type: 3}
+  SpellSound: {fileID: 8300000, guid: 7278ccb0a14d69d4cb646d712eea1ea5, type: 3}
   SpellColor: {r: 0.4943396, g: 0.24155954, b: 0, a: 0}
   DeleteOnHit: 0
   AdvancedRockPrefab: {fileID: 7125610737025763080, guid: 740811c6ec370dc4cb2286052bcabc82, type: 3}

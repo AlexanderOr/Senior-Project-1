@@ -21,7 +21,11 @@ public class EnemyBehavior : MonoBehaviour
     public float EnemyAttackDistance = 1;
 
     public PlayerController playerController;
+
     public SpriteRenderer spriteRenderer;
+    private Color Red = new Color(255, 0, 0, 255);
+    private Color White = new Color(255, 255, 255, 255);
+
     public GameObject EXPPrefab;
     public GameObject VortexGO;
     public GameObject ChestGO;
@@ -235,11 +239,14 @@ public class EnemyBehavior : MonoBehaviour
         EnemyHP -= DamageAmount;
         healthBar.UpdateHealthBar(EnemyHP, EnemyMaxHP);
         //Debug.Log(EnemyHP);
-        spriteRenderer.color = new Color (1, 0, 0, 1);
-        Debug.Log(spriteRenderer.color);
+        spriteRenderer.color = Color.red;
+        //Debug.Log(spriteRenderer.color);
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = Color.white;
+
         yield return new WaitForSeconds(0.5f);
-        spriteRenderer.color = new Color (1, 1, 1, 1);
-        Debug.Log(spriteRenderer.color);
+        //Debug.Log(spriteRenderer.color);
+
     }
 
     IEnumerator Bleeding()
