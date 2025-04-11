@@ -247,8 +247,8 @@ public class PlayerController : MonoBehaviour
 
         if(collision.tag == "EnemyBullet" && Immune == false)
         {
-            Player_HP -= 5;
             Destroy(collision.gameObject);
+            playerHit();
         }
 
     }

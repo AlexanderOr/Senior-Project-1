@@ -61,6 +61,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         playerController = Player.GetComponent<PlayerController>();
+
     }
 
     // Update is called once per frame
@@ -156,21 +157,7 @@ public class EnemyBehavior : MonoBehaviour
         }
         else if (EnemyHP <= 0)
         {
-            Animator.SetBool("HasHP", false);
-            Instantiate(EXPPrefab, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
-            RandomChestChance = Random.Range(1, 200);
-            RandomVortexChance = Random.Range(1, 200);
-            
-            if (ChestDropChance >= RandomChestChance)
-            {
-                Instantiate(ChestGO, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
-            }
-            else if (VortexDropChance >= RandomVortexChance)
-            {
-                Instantiate(VortexGO, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
-            }
-
-            Destroy(gameObject);
+            StartCoroutine(EnemyDeath());
         }
         
         
@@ -234,7 +221,7 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    IEnumerator Damage(int DamageAmount)
+    public IEnumerator Damage(int DamageAmount)
     {
         EnemyHP -= DamageAmount;
         healthBar.UpdateHealthBar(EnemyHP, EnemyMaxHP);
@@ -299,6 +286,30 @@ public class EnemyBehavior : MonoBehaviour
         MoveSpeed = 0; // Disable movement
         yield return new WaitForSeconds(duration);
         MoveSpeed = 3f; // Restore movement
+    }
+
+    IEnumerator EnemyDeath()
+    {
+        Animator.SetBool("HasHP", false);
+        MoveSpeed = 0;
+        audioSource.PlayOneShot(DeathSound);
+
+        yield return new WaitForSeconds(1f);
+
+        Instantiate(EXPPrefab, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
+        RandomChestChance = Random.Range(1, 200);
+        RandomVortexChance = Random.Range(1, 200);
+
+        if (ChestDropChance >= RandomChestChance)
+        {
+            Instantiate(ChestGO, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
+        }
+        else if (VortexDropChance >= RandomVortexChance)
+        {
+            Instantiate(VortexGO, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
+        }
+
+        Destroy(gameObject);
     }
 }
 

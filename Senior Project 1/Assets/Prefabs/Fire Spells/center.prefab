@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -2336885081277756726}
   - component: {fileID: 2346435018525297096}
   - component: {fileID: -6510871738345275573}
+  - component: {fileID: 1045942180053334127}
   m_Layer: 8
   m_Name: center
   m_TagString: Spells
@@ -56,7 +57,7 @@ EdgeCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609070407655874589}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -106,6 +107,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellData: {fileID: 11400000, guid: 17a0c9953bae02140bc08ad84c53ff5f, type: 2}
+--- !u!114 &1045942180053334127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609070407655874589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5fe65aa220b77146bbadf30f4e59760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ps: {fileID: 0}
+  damageAmount: 10
+  spellinstance: {fileID: 0}
 --- !u!1 &3933509873091556728
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +135,7 @@ GameObject:
   - component: {fileID: 8698505416505257261}
   m_Layer: 0
   m_Name: Particle System 2
-  m_TagString: Untagged
+  m_TagString: Spells
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3906,9 +3922,9 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 2
-    inside: 1
+    inside: 2
     outside: 0
     enter: 0
     exit: 0
@@ -5057,10 +5073,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.25}
-      - {x: -0.5, y: 0}
-      - {x: 1.156451, y: -0.8766714}
-      - {x: 1.1465197, y: 0.7695963}
+    - - {x: -0.014193915, y: 0.27570608}
+      - {x: -0.5567758, y: -0.017137405}
+      - {x: 1.1635482, y: -0.9195149}
+      - {x: 1.1394227, y: 0.8381458}
   m_UseDelaunayMesh: 0
 --- !u!4 &1663724976803681268 stripped
 Transform:
