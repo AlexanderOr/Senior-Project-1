@@ -146,7 +146,8 @@ public class SpellHolder : MonoBehaviour
         {
             // Upgrade spell level if player already owns it
             playerSpells[spell]++;
-            manager.updateLevel(spell);
+            //Debug.Log(playerSpells[spell]);
+            manager.UpdateLevel(spell);
         }
         else
         {

@@ -57,7 +57,7 @@ EdgeCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609070407655874589}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -86,10 +86,11 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: 1.3349106, y: 0.5737332}
-  - {x: 2.6470056, y: 0.019024849}
-  - {x: 1.3141947, y: -0.5383935}
-  - {x: -0.00501585, y: 0.021836996}
-  - {x: 1.3218334, y: 0.573733}
+  - {x: 4.04156, y: 1.6553024}
+  - {x: 4.056623, y: -1.7517519}
+  - {x: 1.3513827, y: -0.6499579}
+  - {x: -0.19095647, y: -0.033945322}
+  - {x: 1.3590214, y: 0.592327}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -3741,10 +3742,10 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
-    collisionMode: 0
+    type: 1
+    collisionMode: 1
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
@@ -3914,11 +3915,11 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 0
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -4919,7 +4920,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -5036,7 +5037,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859479249704588550}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

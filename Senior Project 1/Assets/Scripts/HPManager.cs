@@ -33,6 +33,18 @@ public class HPManager : MonoBehaviour
     public TMP_Text spellLevel4;
     public TMP_Text spellLevel5;
 
+    public int spellLevel1int;
+    public int spellLevel2int;
+    public int spellLevel3int;
+    public int spellLevel4int;
+    public int spellLevel5int;
+
+    public string spellName1;
+    public string spellName2;
+    public string spellName3;
+    public string spellName4;
+    public string spellName5;
+
     public void SetSpell(Spells spells)
     {
         if (spells != null)
@@ -41,34 +53,73 @@ public class HPManager : MonoBehaviour
             {
                 spellIcon1.sprite = spells.Icon;
                 spellLevel1.text = spells.Level.ToString();
+                spellLevel1int = spells.Level;
+                spellName1 = spells.name;
             }
             else if (spellHolder.i == 1)
             {
                 spellIcon2.sprite = spells.Icon;
                 spellLevel2.text = spells.Level.ToString();
+                spellLevel2int = spells.Level;
+                spellName2 = spells.name;
             }
             else if (spellHolder.i == 2)
             {
                 spellIcon3.sprite = spells.Icon;
                 spellLevel3.text = spells.Level.ToString();
+                spellLevel3int = spells.Level;
+                spellName3 = spells.name;
             }
             else if (spellHolder.i == 3)
             {
                 spellIcon4.sprite = spells.Icon;
                 spellLevel4.text = spells.Level.ToString();
+                spellLevel4int = spells.Level;
+                spellName4 = spells.name;
             }
             else if (spellHolder.i == 4)
             {
                 spellIcon5.sprite = spells.Icon;
                 spellLevel5.text = spells.Level.ToString();
+                spellLevel5int = spells.Level;
+                spellName5 = spells.name;
             }
 
         }
     }
 
-    public void updateLevel(Spells spells)
+    public void UpdateLevel(Spells spells)
     {
-        
+        Debug.Log(spells.name);
+        Debug.Log(spells);
+        Debug.Log(spellName1);
+
+        if (spells.name == spellName1)
+        {
+            spellLevel1int++;
+            spellLevel1.text = spellLevel1int.ToString();
+        }
+        else if (spells.name == spellName2)
+        {
+            spellLevel2int++;
+            spellLevel2.text = spellLevel2int.ToString();
+        }
+        else if (spells.name == spellName3)
+        {
+            spellLevel3int++;
+            spellLevel3.text = spellLevel3int.ToString();
+        }
+        else if (spells.name == spellName4)
+        {
+            spellLevel4int++;
+            spellLevel4.text = spellLevel4int.ToString();
+        }
+        else if (spells.name == spellName5)
+        {
+            spellLevel5int++;
+            spellLevel5.text = spellLevel5int.ToString();
+        }
+
     }
 
     void Update()

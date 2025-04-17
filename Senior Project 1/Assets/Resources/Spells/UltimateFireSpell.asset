@@ -25,7 +25,7 @@ MonoBehaviour:
   isKnockedBack: 0
   ForceAmount: 10
   speedReduction: 0
-  SpellSound: {fileID: 8300000, guid: f6f0e460446168549843f96620a11ec4, type: 3}
+  SpellSound: {fileID: 8300000, guid: eea465b2aa883ef4abbbefde746630a8, type: 3}
   SpellColor: {r: 1, g: 0.26548588, b: 0, a: 0}
   DeleteOnHit: 0
   UltimateFirePrefab: {fileID: 5265232925150470296, guid: a1fdd4aebb7f6e34a922d7e2d081c8a6, type: 3}

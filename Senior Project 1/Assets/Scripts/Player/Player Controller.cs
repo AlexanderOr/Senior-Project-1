@@ -201,17 +201,6 @@ public class PlayerController : MonoBehaviour
             LevelUp();
         }
 
-        if (isCasting)
-        {
-            Indicator.SetActive(true);
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Indicator.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
-        }
-        else
-        {
-            Indicator.SetActive(false);
-        }
-
     }
 
     public void playerHit()

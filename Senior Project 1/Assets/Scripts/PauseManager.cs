@@ -16,6 +16,7 @@ public class PauseManager : MonoBehaviour
         {
             PauseMenu.SetActive(true);
             playerController.isPaused = true;
+            Time.timeScale = 0;
         }
 ;
     }
@@ -24,12 +25,14 @@ public class PauseManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
         playerController.isPaused = false;
+        Time.timeScale = 1;
     }
 
     public void Resume()
     {
         PauseMenu.SetActive(false);
         playerController.isPaused = false;
+        Time.timeScale = 1;
     }
 
     public void Quit()

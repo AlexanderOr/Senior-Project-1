@@ -36,6 +36,8 @@ public class RangedEnemyAI : MonoBehaviour
     public int RandomChestChance;
     public int RandomVortexChance;
 
+    public GameObject spellHolderGO;
+    public SpellHolder spellHolder;
     private void Start()
     {
         healthBar = GetComponentInChildren<EnemyHPBar>();
@@ -47,6 +49,8 @@ public class RangedEnemyAI : MonoBehaviour
         PlayerGO = GameObject.FindGameObjectWithTag("Player");
         playerController = PlayerGO.GetComponent<PlayerController>();
         audioSource = GetComponent<AudioSource>();
+        spellHolderGO = GameObject.FindGameObjectWithTag("Holder");
+        spellHolder = spellHolderGO.GetComponent<SpellHolder>();
     }
 
 
@@ -131,7 +135,7 @@ public class RangedEnemyAI : MonoBehaviour
             {
                 Spells spellData = spellInstance.spellData;
 
-                int finalDamage = spellData.Damage + (5 * (spellData.Level - 1));
+                int finalDamage = spellData.Damage + (5 * (spellHolder.playerSpells[spellData] - 1));
                 // Apply damage based on the spell's damage property
                 
 

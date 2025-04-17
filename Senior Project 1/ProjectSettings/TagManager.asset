@@ -12,6 +12,7 @@ TagManager:
   - Chest
   - Vortex
   - EnemyBullet
+  - Holder
   layers:
   - Default
   - TransparentFX

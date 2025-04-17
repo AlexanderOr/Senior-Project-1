@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -11,7 +12,7 @@ public class EnemyBehavior : MonoBehaviour
     public HitBox HitBox;
     public bool HasTarget = false;
     public Animator Animator;
-    bool isBleeding = false;
+    public bool isBleeding = false;
 
     private Rigidbody2D RB;
 
@@ -46,6 +47,13 @@ public class EnemyBehavior : MonoBehaviour
     //Health Increase over time
     public float Counter;
 
+    public GameObject spellHolderGO;
+    public SpellHolder spellHolder;
+
+    private CircleCollider2D myCircleCollider;
+
+    public ParticleSystem particleSystem;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +63,9 @@ public class EnemyBehavior : MonoBehaviour
         healthBar = GetComponentInChildren<EnemyHPBar>();
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        spellHolderGO = GameObject.FindGameObjectWithTag("Holder");
+        spellHolder = spellHolderGO.GetComponent<SpellHolder>();
+        myCircleCollider = GetComponent<CircleCollider2D>();
     }
 
     private void Awake()
@@ -86,10 +97,12 @@ public class EnemyBehavior : MonoBehaviour
         if (isBleeding == true)
         {
             StartCoroutine(Bleeding());
+            particleSystem.enableEmission = true;
             //enable icon for bleeding
         }
         else
         {
+            particleSystem.enableEmission = false;
             //disable icon for bleeding
         }
 
@@ -174,7 +187,8 @@ public class EnemyBehavior : MonoBehaviour
             {
                 Spells spellData = spellInstance.spellData;
 
-                int finalDamage = spellData.Damage + (5 * (spellData.Level - 1));
+                int finalDamage = spellData.Damage + (5 * (spellHolder.playerSpells[spellData] - 1));
+                Debug.Log(spellHolder.playerSpells[spellData]);
                 // Apply damage based on the spell's damage property
                 
 
@@ -212,7 +226,7 @@ public class EnemyBehavior : MonoBehaviour
                 // Destroy the spell object after applying its effects
                 if (spellData.DeleteOnHit == true)
                 {
-                    Debug.Log("Spell was not one of the detected spells");
+                    //Debug.Log("Spell was not one of the detected spells");
                     Destroy(collision.gameObject);
                 }
                 
@@ -293,7 +307,8 @@ public class EnemyBehavior : MonoBehaviour
         Animator.SetBool("HasHP", false);
         MoveSpeed = 0;
         audioSource.PlayOneShot(DeathSound);
-
+        myCircleCollider.enabled = false;
+        
         yield return new WaitForSeconds(1f);
 
         Instantiate(EXPPrefab, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
