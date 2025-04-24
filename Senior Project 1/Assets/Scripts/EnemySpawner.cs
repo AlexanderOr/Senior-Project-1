@@ -19,6 +19,15 @@ public class EnemySpawner : MonoBehaviour
 
     public PlayerController playerController;
     public GameTimer gameTimer;
+
+    public Vector2 arenaMax;
+    public Vector2 arenaMin;
+
+    int maxAttempts = 10;
+    int attempts = 0;
+    bool validPosition = false;
+    public Vector3 spawnPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,10 +58,26 @@ public class EnemySpawner : MonoBehaviour
 
         if(playerController.isPaused == false)
         {
-            Vector2 randomDirection = Random.insideUnitCircle.normalized;  // Random direction around the player
-            Vector3 spawnPosition = playerController.transform.position + (Vector3)randomDirection * spawnRadius;
+            do
+            {
+                Vector2 randomDirection = Random.insideUnitCircle.normalized;  // Random direction around the player
+                spawnPosition = playerController.transform.position + (Vector3)randomDirection * spawnRadius;
 
-            Instantiate(RandomEnemyObject, spawnPosition, Quaternion.identity);
+                if ((spawnPosition.x >= arenaMin.x && spawnPosition.x <= arenaMax.x) && 
+                    (spawnPosition.y >= arenaMin.y && spawnPosition.y <= arenaMax.y))
+                {
+                    validPosition = true;
+                }
+
+                attempts++;
+
+            }
+            while (!validPosition && attempts < maxAttempts);
+
+            if(validPosition)
+            {
+                Instantiate(RandomEnemyObject, spawnPosition, Quaternion.identity);
+            }
         }
 
         if (stopSpawning == true)
