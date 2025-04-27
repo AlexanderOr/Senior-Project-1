@@ -345,10 +345,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: dfb7c12bdee555145ba09ab4818eaa06, type: 3}
   DeathSound: {fileID: 0}
   audioSource: {fileID: 1711022708623806385}
-  ChestDropChance: 20
-  VortexDropChance: 25
+  ChestDropChance: 30
+  VortexDropChance: 35
   RandomChestChance: 0
   RandomVortexChance: 0
+  spellHolderGO: {fileID: 0}
+  spellHolder: {fileID: 0}
 --- !u!82 &1711022708623806385
 AudioSource:
   m_ObjectHideFlags: 0

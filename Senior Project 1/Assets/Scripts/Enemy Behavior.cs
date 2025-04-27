@@ -39,8 +39,8 @@ public class EnemyBehavior : MonoBehaviour
     public AudioSource audioSource;
 
     //int for drops
-    public int ChestDropChance = 1;
-    public int VortexDropChance = 5;
+    public int ChestDropChance;
+    public int VortexDropChance;
     public int RandomChestChance;
     public int RandomVortexChance;
 

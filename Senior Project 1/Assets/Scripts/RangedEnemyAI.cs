@@ -31,8 +31,8 @@ public class RangedEnemyAI : MonoBehaviour
     public AudioSource audioSource;
 
     //int for drops
-    public int ChestDropChance = 1;
-    public int VortexDropChance = 5;
+    public int ChestDropChance;
+    public int VortexDropChance;
     public int RandomChestChance;
     public int RandomVortexChance;
 
@@ -66,14 +66,14 @@ public class RangedEnemyAI : MonoBehaviour
         if (EnemyHP <= 0)
         {
             Instantiate(EXPPrefab, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
-            RandomChestChance = Random.Range(1, 100);
-            RandomVortexChance = Random.Range(1, 100);
+            RandomChestChance = Random.Range(1, 200);
+            RandomVortexChance = Random.Range(1, 200);
 
-            if (ChestDropChance < RandomChestChance)
+            if (ChestDropChance >= RandomChestChance)
             {
                 Instantiate(ChestGO, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
             }
-            else if (VortexDropChance < RandomVortexChance)
+            else if (VortexDropChance >= RandomVortexChance)
             {
                 Instantiate(VortexGO, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
             }
