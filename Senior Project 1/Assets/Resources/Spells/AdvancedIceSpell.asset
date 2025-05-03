@@ -20,12 +20,12 @@ MonoBehaviour:
   CastTime: 2
   CoolDown: 5
   Icon: {fileID: -309737807, guid: 81d6793b61990d142b4f317d53dc63ce, type: 3}
-  Damage: 20
+  Damage: 17
   isBleeding: 0
   isStunned: 0
   isKnockedBack: 0
   ForceAmount: 10
-  speedReduction: 2
+  speedReduction: 3
   SpellSound: {fileID: 8300000, guid: 84a9ebf9b79cfb94a833372f883c2fda, type: 3}
   SpellColor: {r: 0, g: 0.77104276, b: 0.82641506, a: 0}
   DeleteOnHit: 0

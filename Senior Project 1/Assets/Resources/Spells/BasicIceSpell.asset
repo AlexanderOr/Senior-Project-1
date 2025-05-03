@@ -24,7 +24,7 @@ MonoBehaviour:
   isStunned: 0
   isKnockedBack: 0
   ForceAmount: 10
-  speedReduction: 1
+  speedReduction: 3
   SpellSound: {fileID: 8300000, guid: e5700814f23107a478cb732b8c76c183, type: 3}
   SpellColor: {r: 0, g: 0, b: 0, a: 0}
   DeleteOnHit: 1

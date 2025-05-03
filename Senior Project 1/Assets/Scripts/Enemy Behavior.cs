@@ -252,9 +252,9 @@ public class EnemyBehavior : MonoBehaviour
 
     IEnumerator Bleeding()
     {
-        int bleedTime = 2;
+        int bleedTime = 3;
         int bleedTicks = 0;
-        int bleedDamage = 5;
+        int bleedDamage = 7;
 
         yield return new WaitForSeconds(1f);
         while(isBleeding == true)
