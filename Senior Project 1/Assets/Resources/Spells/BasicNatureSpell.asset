@@ -19,7 +19,7 @@ MonoBehaviour:
   CastTime: 0
   CoolDown: 0.75
   Icon: {fileID: 221382481, guid: 81d6793b61990d142b4f317d53dc63ce, type: 3}
-  Damage: 10
+  Damage: 5
   isBleeding: 1
   isStunned: 0
   isKnockedBack: 0

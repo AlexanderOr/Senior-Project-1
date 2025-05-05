@@ -18,7 +18,7 @@ MonoBehaviour:
   Level: 1
   type: 3
   CastTime: 3
-  CoolDown: 60
+  CoolDown: 40
   Icon: {fileID: 21300000, guid: 4af934220b522754d93d1f6e7c0b56bd, type: 3}
   Damage: 15
   isBleeding: 1

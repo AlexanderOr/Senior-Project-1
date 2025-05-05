@@ -399,7 +399,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 28313855da7cf1e48b79bf3528641f6c, type: 3}
   - {fileID: 8300000, guid: 98a29fdc0b2cd894cadb35d4f2013185, type: 3}
   - {fileID: 8300000, guid: dfb7c12bdee555145ba09ab4818eaa06, type: 3}
-  DeathSound: {fileID: 8300000, guid: 9957d5843d728ea49b99b4b675adb832, type: 3}
+  DeathSound: {fileID: 0}
   audioSource: {fileID: 0}
   ChestDropChance: 20
   VortexDropChance: 25

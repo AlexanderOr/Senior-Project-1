@@ -206,6 +206,7 @@ public class EnemyBehavior : MonoBehaviour
                 if (spellData.speedReduction > 0f)
                 {
                     MoveSpeed = Mathf.Max(2f, MoveSpeed - spellData.speedReduction);
+                    Debug.Log(MoveSpeed);
                 }
 
                 if (spellData.isKnockedBack)
